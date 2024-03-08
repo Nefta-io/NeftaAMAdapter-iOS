@@ -1,0 +1,1 @@
+../../../../NeftaAMAdapter/NeftaAMAdapter/NeftaAMAdapter.h

@@ -1,0 +1,1 @@
+../../../../NeftaAMAdapter/NeftaAMAdapter/AdBannerNeftaRequest.h
