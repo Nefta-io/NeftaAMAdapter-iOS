@@ -53,14 +53,10 @@ PODS:
     - nanopb/encode (= 2.30910.0)
   - nanopb/decode (2.30910.0)
   - nanopb/encode (2.30910.0)
-  - NeftaAMAdapter (1.0.0):
-    - NeftaSDK (~> 3.2.3)
-  - NeftaSDK (3.2.3)
   - PromisesObjC (2.4.0)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK (~> 10.4)
-  - NeftaAMAdapter (from `.`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -69,12 +65,7 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - nanopb
-    - NeftaSDK
     - PromisesObjC
-
-EXTERNAL SOURCES:
-  NeftaAMAdapter:
-    :path: "."
 
 SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 8f67a72f88d057335b1ac3f501e2b68ad054116e
@@ -82,10 +73,8 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: dce302b8f1b84d6e945812ee7a15c3f65a102cbf
   GoogleUtilities: d053d902a8edaa9904e1bd00c37535385b8ed152
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
-  NeftaAMAdapter: 083d76d4df8d78b787215fcb8aea9ccf5afc8024
-  NeftaSDK: 3b19a59663e01190e8241ab80c59fb8296f409d4
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
 
-PODFILE CHECKSUM: 2897af9915798ff26bef334c93824aefa8632ebe
+PODFILE CHECKSUM: bc2c3f8fe3f17a075268d62dd3b7251fb123e28e
 
 COCOAPODS: 1.15.2

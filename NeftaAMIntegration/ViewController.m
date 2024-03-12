@@ -21,8 +21,7 @@
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-#import <NeftaAMAdapter/NeftaAMAdapter.h>
-#import <NeftaSDK/NeftaSDK-Swift.h>
+#import "NeftaAdapter.h"
 
 #import "ExampleNativeAdView.h"
 
@@ -70,9 +69,9 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
     
-    [NeftaPlugin_iOS EnableLogging: true];
-    NSString *appId = @"5661184053215232";
-    NeftaPlugin_iOS *plugin = [NeftaPlugin_iOS InitWithAppId: appId];
+  [NeftaPlugin_iOS EnableLogging: true];
+  NSString *appId = @"5661184053215232";
+  NeftaPlugin_iOS *plugin = [NeftaPlugin_iOS InitWithAppId: appId];
     
   self.config = [[AdSourceConfig alloc] init];
   self.title = self.config.title;

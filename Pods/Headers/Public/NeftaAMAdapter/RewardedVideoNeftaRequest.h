@@ -1,1 +1,0 @@
-../../../../NeftaAMAdapter/NeftaAMAdapter/RewardedVideoNeftaRequest.h
