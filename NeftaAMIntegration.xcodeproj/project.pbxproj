@@ -15,13 +15,12 @@
 		4A93FA521C286D8F00479579 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A93FA3A1C286D8F00479579 /* AppDelegate.m */; };
 		4A93FA591C286D8F00479579 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A93FA481C286D8F00479579 /* Images.xcassets */; };
 		4A93FA601C286D8F00479579 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A93FA511C286D8F00479579 /* ViewController.m */; };
-		90A292752BA04C1800280A6B /* NeftaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A292742BA04C1800280A6B /* NeftaSDK.xcframework */; };
-		90A292762BA04C1800280A6B /* NeftaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90A292742BA04C1800280A6B /* NeftaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		90A292842BA04E7E00280A6B /* NeftaAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A292782BA04E7E00280A6B /* NeftaAdapter.m */; };
-		90A292852BA04E7E00280A6B /* RewardedVideoNeftaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A292792BA04E7E00280A6B /* RewardedVideoNeftaRequest.m */; };
-		90A292862BA04E7E00280A6B /* AdBannerNeftaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A292802BA04E7E00280A6B /* AdBannerNeftaRequest.m */; };
-		90A292872BA04E7E00280A6B /* NeftaExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A292812BA04E7E00280A6B /* NeftaExtras.m */; };
-		90A292882BA04E7E00280A6B /* InterstitialNeftaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A292822BA04E7E00280A6B /* InterstitialNeftaRequest.m */; };
+		900D78ED2BAC743A002AC761 /* NeftaAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D78E22BAC743A002AC761 /* NeftaAdapter.m */; };
+		900D78EE2BAC743A002AC761 /* RewardedVideoNeftaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D78E32BAC743A002AC761 /* RewardedVideoNeftaRequest.m */; };
+		900D78EF2BAC743A002AC761 /* AdBannerNeftaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D78EA2BAC743A002AC761 /* AdBannerNeftaRequest.m */; };
+		900D78F02BAC743A002AC761 /* NeftaExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D78EB2BAC743A002AC761 /* NeftaExtras.m */; };
+		900D78F12BAC743A002AC761 /* InterstitialNeftaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D78EC2BAC743A002AC761 /* InterstitialNeftaRequest.m */; };
+		900D78F52BAC7454002AC761 /* NeftaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900D78F42BAC7454002AC761 /* NeftaSDK.xcframework */; };
 		AEDDCB2F1F4501BA00BFB33C /* AdSourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDCB2E1F4501B900BFB33C /* AdSourceConfig.m */; };
 		B60AF3EBB1AED35E939116C3 /* libPods-NeftaAMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F054AB00866ABE8F67019D /* libPods-NeftaAMIntegration.a */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				90A292762BA04C1800280A6B /* NeftaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,18 +55,18 @@
 		4A93FA501C286D8F00479579 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = NeftaAMIntegration/ViewController.h; sourceTree = SOURCE_ROOT; };
 		4A93FA511C286D8F00479579 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = NeftaAMIntegration/ViewController.m; sourceTree = SOURCE_ROOT; };
 		6B1383398C32E7A4A33728DA /* Pods-NeftaAMIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeftaAMIntegration.debug.xcconfig"; path = "Target Support Files/Pods-NeftaAMIntegration/Pods-NeftaAMIntegration.debug.xcconfig"; sourceTree = "<group>"; };
-		90A292742BA04C1800280A6B /* NeftaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NeftaSDK.xcframework; path = "NeftaAMAdapter-1.0.0/NeftaSDK.xcframework"; sourceTree = "<group>"; };
-		90A292782BA04E7E00280A6B /* NeftaAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeftaAdapter.m; sourceTree = "<group>"; };
-		90A292792BA04E7E00280A6B /* RewardedVideoNeftaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardedVideoNeftaRequest.m; sourceTree = "<group>"; };
-		90A2927A2BA04E7E00280A6B /* AdBannerNeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdBannerNeftaRequest.h; sourceTree = "<group>"; };
-		90A2927B2BA04E7E00280A6B /* InterstitialNeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterstitialNeftaRequest.h; sourceTree = "<group>"; };
-		90A2927C2BA04E7E00280A6B /* NeftaExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaExtras.h; sourceTree = "<group>"; };
-		90A2927D2BA04E7E00280A6B /* NeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaRequest.h; sourceTree = "<group>"; };
-		90A2927E2BA04E7E00280A6B /* NeftaAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaAdapter.h; sourceTree = "<group>"; };
-		90A2927F2BA04E7E00280A6B /* RewardedVideoNeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardedVideoNeftaRequest.h; sourceTree = "<group>"; };
-		90A292802BA04E7E00280A6B /* AdBannerNeftaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdBannerNeftaRequest.m; sourceTree = "<group>"; };
-		90A292812BA04E7E00280A6B /* NeftaExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeftaExtras.m; sourceTree = "<group>"; };
-		90A292822BA04E7E00280A6B /* InterstitialNeftaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterstitialNeftaRequest.m; sourceTree = "<group>"; };
+		900D78E22BAC743A002AC761 /* NeftaAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeftaAdapter.m; sourceTree = "<group>"; };
+		900D78E32BAC743A002AC761 /* RewardedVideoNeftaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardedVideoNeftaRequest.m; sourceTree = "<group>"; };
+		900D78E42BAC743A002AC761 /* AdBannerNeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdBannerNeftaRequest.h; sourceTree = "<group>"; };
+		900D78E52BAC743A002AC761 /* InterstitialNeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterstitialNeftaRequest.h; sourceTree = "<group>"; };
+		900D78E62BAC743A002AC761 /* NeftaExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaExtras.h; sourceTree = "<group>"; };
+		900D78E72BAC743A002AC761 /* NeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaRequest.h; sourceTree = "<group>"; };
+		900D78E82BAC743A002AC761 /* NeftaAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaAdapter.h; sourceTree = "<group>"; };
+		900D78E92BAC743A002AC761 /* RewardedVideoNeftaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardedVideoNeftaRequest.h; sourceTree = "<group>"; };
+		900D78EA2BAC743A002AC761 /* AdBannerNeftaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdBannerNeftaRequest.m; sourceTree = "<group>"; };
+		900D78EB2BAC743A002AC761 /* NeftaExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeftaExtras.m; sourceTree = "<group>"; };
+		900D78EC2BAC743A002AC761 /* InterstitialNeftaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterstitialNeftaRequest.m; sourceTree = "<group>"; };
+		900D78F42BAC7454002AC761 /* NeftaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NeftaSDK.xcframework; path = "NeftaAMAdapter-1.0.1/NeftaSDK.xcframework"; sourceTree = "<group>"; };
 		AEDDCB2E1F4501B900BFB33C /* AdSourceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdSourceConfig.m; path = NeftaAMIntegration/AdSourceConfig.m; sourceTree = SOURCE_ROOT; };
 		AEDDCB301F4501D000BFB33C /* AdSourceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AdSourceConfig.h; path = NeftaAMIntegration/AdSourceConfig.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -78,8 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900D78F52BAC7454002AC761 /* NeftaSDK.xcframework in Frameworks */,
 				B60AF3EBB1AED35E939116C3 /* libPods-NeftaAMIntegration.a in Frameworks */,
-				90A292752BA04C1800280A6B /* NeftaSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +87,7 @@
 		26E462A91B8693F600D2C50F = {
 			isa = PBXGroup;
 			children = (
-				90A292772BA04E7E00280A6B /* NeftaAMAdapter */,
+				900D78E12BAC743A002AC761 /* NeftaAMAdapter */,
 				26E462B41B8693F600D2C50F /* NeftaAMIntegration */,
 				26E462B31B8693F600D2C50F /* Products */,
 				74DBB23D50D2FE6107613784 /* Frameworks */,
@@ -137,29 +135,29 @@
 		74DBB23D50D2FE6107613784 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90A292742BA04C1800280A6B /* NeftaSDK.xcframework */,
+				900D78F42BAC7454002AC761 /* NeftaSDK.xcframework */,
 				40F054AB00866ABE8F67019D /* libPods-NeftaAMIntegration.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		90A292772BA04E7E00280A6B /* NeftaAMAdapter */ = {
+		900D78E12BAC743A002AC761 /* NeftaAMAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				90A292782BA04E7E00280A6B /* NeftaAdapter.m */,
-				90A292792BA04E7E00280A6B /* RewardedVideoNeftaRequest.m */,
-				90A2927A2BA04E7E00280A6B /* AdBannerNeftaRequest.h */,
-				90A2927B2BA04E7E00280A6B /* InterstitialNeftaRequest.h */,
-				90A2927C2BA04E7E00280A6B /* NeftaExtras.h */,
-				90A2927D2BA04E7E00280A6B /* NeftaRequest.h */,
-				90A2927E2BA04E7E00280A6B /* NeftaAdapter.h */,
-				90A2927F2BA04E7E00280A6B /* RewardedVideoNeftaRequest.h */,
-				90A292802BA04E7E00280A6B /* AdBannerNeftaRequest.m */,
-				90A292812BA04E7E00280A6B /* NeftaExtras.m */,
-				90A292822BA04E7E00280A6B /* InterstitialNeftaRequest.m */,
+				900D78E22BAC743A002AC761 /* NeftaAdapter.m */,
+				900D78E32BAC743A002AC761 /* RewardedVideoNeftaRequest.m */,
+				900D78E42BAC743A002AC761 /* AdBannerNeftaRequest.h */,
+				900D78E52BAC743A002AC761 /* InterstitialNeftaRequest.h */,
+				900D78E62BAC743A002AC761 /* NeftaExtras.h */,
+				900D78E72BAC743A002AC761 /* NeftaRequest.h */,
+				900D78E82BAC743A002AC761 /* NeftaAdapter.h */,
+				900D78E92BAC743A002AC761 /* RewardedVideoNeftaRequest.h */,
+				900D78EA2BAC743A002AC761 /* AdBannerNeftaRequest.m */,
+				900D78EB2BAC743A002AC761 /* NeftaExtras.m */,
+				900D78EC2BAC743A002AC761 /* InterstitialNeftaRequest.m */,
 			);
 			name = NeftaAMAdapter;
-			path = "NeftaAMAdapter-1.0.0/NeftaAMAdapter";
+			path = "NeftaAMAdapter-1.0.1/NeftaAMAdapter";
 			sourceTree = "<group>";
 		};
 		AAE34E526612B5CA72DF4882 /* Pods */ = {
@@ -297,13 +295,13 @@
 			files = (
 				2B7390D426E0A76000D12EE5 /* ExampleNativeAdView.m in Sources */,
 				4A0575BE1C287FFB0085EBE0 /* main.m in Sources */,
-				90A292882BA04E7E00280A6B /* InterstitialNeftaRequest.m in Sources */,
-				90A292872BA04E7E00280A6B /* NeftaExtras.m in Sources */,
+				900D78F12BAC743A002AC761 /* InterstitialNeftaRequest.m in Sources */,
+				900D78F02BAC743A002AC761 /* NeftaExtras.m in Sources */,
 				AEDDCB2F1F4501BA00BFB33C /* AdSourceConfig.m in Sources */,
-				90A292862BA04E7E00280A6B /* AdBannerNeftaRequest.m in Sources */,
-				90A292852BA04E7E00280A6B /* RewardedVideoNeftaRequest.m in Sources */,
+				900D78EF2BAC743A002AC761 /* AdBannerNeftaRequest.m in Sources */,
+				900D78EE2BAC743A002AC761 /* RewardedVideoNeftaRequest.m in Sources */,
 				4A93FA521C286D8F00479579 /* AppDelegate.m in Sources */,
-				90A292842BA04E7E00280A6B /* NeftaAdapter.m in Sources */,
+				900D78ED2BAC743A002AC761 /* NeftaAdapter.m in Sources */,
 				4A93FA601C286D8F00479579 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
