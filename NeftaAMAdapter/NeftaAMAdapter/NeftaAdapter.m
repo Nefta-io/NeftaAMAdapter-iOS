@@ -26,7 +26,7 @@ static NSMutableArray *_requests;
 }
 
 + (GADVersionNumber)adapterVersion {
-    GADVersionNumber version = {1, 1, 0};
+    GADVersionNumber version = {1, 1, 1};
     return version;
 }
 
@@ -60,7 +60,7 @@ static NSMutableArray *_requests;
             }
         }
     };
-    _plugin.OnLoad = ^(Placement *placement) {
+    _plugin.OnLoad = ^(Placement *placement, NSInteger width, NSInteger height) {
         for (int i = 0; i < _requests.count; i++) {
             id<NeftaRequest> r = _requests[i];
             if ([r._placementId isEqualToString: placement._id] && r._state == 0) {
@@ -70,12 +70,12 @@ static NSMutableArray *_requests;
             }
         }
     };
-    _plugin.OnShow = ^(Placement *placement, NSInteger width, NSInteger height) {
+    _plugin.OnShow = ^(Placement *placement) {
         for (int i = 0; i < _requests.count; i++) {
             id<NeftaRequest> r = _requests[i];
             if ([r._placementId isEqualToString: placement._id] && r._state == 1) {
                 r._state = 2;
-                [r OnShow: width height: height];
+                [r OnShow];
                 return;
             }
         }
@@ -178,3 +178,35 @@ static NSMutableArray *_requests;
 }
 
 @end
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+    void EnableLogging(bool enable);
+    void * NeftaPlugin_Init(const char *appId);
+    void NeftaPlugin_Record(void *instance, const char *event);
+    const char * NeftaPlugin_GetNuid(void *instance, bool present);
+#ifdef __cplusplus
+}
+#endif
+
+void NeftaPlugin_EnableLogging(bool enable) {
+    [NeftaPlugin_iOS EnableLogging: enable];
+}
+
+void * NeftaPlugin_Init(const char *appId) {
+    _plugin = [NeftaPlugin_iOS InitWithAppId: [NSString stringWithUTF8String: appId]];
+    [NeftaAdapter Init];
+    return (__bridge_retained void *)_plugin;
+}
+
+void NeftaPlugin_Record(void *instance, const char *event) {
+    [_plugin RecordWithEvent: [NSString stringWithUTF8String: event]];
+}
+
+const char * NeftaPlugin_GetNuid(void *instance, bool present) {
+    const char *string = [[_plugin GetNuidWithPresent: present] UTF8String];
+    char *returnString = (char *)malloc(strlen(string) + 1);
+    strcpy(returnString, string);
+    return returnString;
+}
