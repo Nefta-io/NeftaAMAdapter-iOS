@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26E462B11B8693F600D2C50F"
+               BlueprintIdentifier = "90A4B5542C2E8FED00E13A98"
                BuildableName = "AMIntegration.app"
                BlueprintName = "AMIntegration"
                ReferencedContainer = "container:AMIntegration.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26E462B11B8693F600D2C50F"
+            BlueprintIdentifier = "90A4B5542C2E8FED00E13A98"
             BuildableName = "AMIntegration.app"
             BlueprintName = "AMIntegration"
             ReferencedContainer = "container:AMIntegration.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26E462B11B8693F600D2C50F"
+            BlueprintIdentifier = "90A4B5542C2E8FED00E13A98"
             BuildableName = "AMIntegration.app"
             BlueprintName = "AMIntegration"
             ReferencedContainer = "container:AMIntegration.xcodeproj">
