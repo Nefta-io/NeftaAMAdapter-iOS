@@ -15,16 +15,16 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     private let AdUnitIdInsightName = "recommended_rewarded_ad_unit_id"
     private let FloorPriceInsightName = "calculated_user_floor_price_rewarded"
     
+    private var _rewarded: GADRewardedAd!
     private var _recommendedAdUnitId: String?
     private var _calculatedBidFloor: Double = 0.0
     private var _isLoadRequested = false
+    private var _loadedAdUnitId: String? = nil
     
     private let _loadButton: UIButton
     private let _showButton: UIButton
     private let _status: UILabel
     private let _viewController: UIViewController
-    
-    private var _rewarded: GADRewardedAd!
     
     private func GetInsightsAndLoad() {
         _isLoadRequested = true
@@ -50,7 +50,7 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
             _calculatedBidFloor = floorPriceInsight._float
         }
         
-        print("OnBehaviourInsight for Rewarded recommended AdUnit: \(String(describing: _recommendedAdUnitId)) calculated bid floor:\(_calculatedBidFloor)")
+        print("OnBehaviourInsight for Rewarded: \(String(describing: _recommendedAdUnitId)) calculated bid floor:\(_calculatedBidFloor)")
 
         if _isLoadRequested {
             Load()
@@ -60,31 +60,44 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     private func Load() {
         _isLoadRequested = false
         
-        var adUnitId = DefaultAdUnitId
-        if let _recommendedAdUnitId = _recommendedAdUnitId {
-            adUnitId = _recommendedAdUnitId
+        _loadedAdUnitId = DefaultAdUnitId
+        if let recommendedAdUnitId = _recommendedAdUnitId, !recommendedAdUnitId.isEmpty {
+            _loadedAdUnitId = recommendedAdUnitId
         }
         
+        SetInfo("Loading Rewarded \(_loadedAdUnitId!)")
+        
+        let adUnitId = _loadedAdUnitId!
         Task {
             do {
                 _rewarded = try await GADRewardedAd.load(withAdUnitID: adUnitId, request: GADRequest())
                 _rewarded!.paidEventHandler = onPaid
                 _rewarded!.fullScreenContentDelegate = self
                 
+                NeftaAdapter.onExternalMediationRequestLoad(AdType.rewarded, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, rewarded: _rewarded)
+                
                 DispatchQueue.main.async {
-                    NeftaAdapter.onExternalMediationRequestLoad(AdType.rewarded, recommendedAdUnitId: self._recommendedAdUnitId, calculatedFloorPrice: self._calculatedBidFloor, adUnitId: self._rewarded.adUnitID)
-                    
-                    self.SetInfo("Rewarded ad loaded")
+                    self.SetInfo("Loaded Rewarded \(adUnitId)")
                     self._showButton.isEnabled = true
                 }
             } catch {
+                NeftaAdapter.onExternalMediationRequestFail(AdType.rewarded, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error)
+                
                 DispatchQueue.main.async {
-                    NeftaAdapter.onExternalMediationRequestFail(AdType.rewarded, recommendedAdUnitId: self._recommendedAdUnitId, calculatedFloorPrice: self._calculatedBidFloor, adUnitId: self._rewarded.adUnitID, error: error)
+                    self.SetInfo("Failed to load Rewarded \(adUnitId) with error: \(error.localizedDescription)")
                     
-                    self.SetInfo("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        self.GetInsightsAndLoad()
+                    }
                 }
             }
         }
+    }
+    
+    func onPaid(adValue: GADAdValue) {
+        NeftaAdapter.onExternalMediationImpression(.rewarded, adUnitId: _loadedAdUnitId!, adValue: adValue)
+        
+        SetInfo("onPaid \(adValue)")
     }
 
     init(loadButton: UIButton, showButton: UIButton, status: UILabel, viewController: UIViewController) {
@@ -97,6 +110,7 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
         
         _loadButton.addTarget(self, action: #selector(OnLoadClick), for: .touchUpInside)
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
+        
         _showButton.isEnabled = false
     }
     
@@ -123,12 +137,6 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
 
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         SetInfo("Rewarded Ad did dismiss full screen content.")
-    }
-    
-    func onPaid(adValue: GADAdValue) {
-        NeftaAdapter.onExternalMediationImpression(adValue)
-        
-        SetInfo("onPaid \(adValue)")
     }
     
     private func SetInfo(_ info: String) {

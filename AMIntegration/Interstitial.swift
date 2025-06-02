@@ -15,46 +15,29 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
     private let AdUnitIdInsightName = "recommended_interstitial_ad_unit_id"
     private let FloorPriceInsightName = "calculated_user_floor_price_interstitial"
     
+    private var _interstitial: GADInterstitialAd!
+    private var _recommendedAdUnitId: String?
+    private var _calculatedBidFloor: Double = 0.0
+    private var _isLoadRequested = false
+    private var _loadedAdUnitId: String? = nil
+    
     private let _loadButton: UIButton
     private let _showButton: UIButton
     private var _status: UILabel
     private let _viewController: UIViewController
     
-    private var _recommendedAdUnitId: String?
-    private var _calculatedBidFloor: Double = 0.0
-    
-    private var _defaultInterstitial: GADInterstitialAd!
-    private var _recommendedInterstitial: GADInterstitialAd!
-    
-    private func Load() {
-        SetInfo("Loading...")
-        
-        Task {
-            do {
-                _defaultInterstitial = try await GADInterstitialAd.load(withAdUnitID: DefaultAdUnitId, request: GADRequest())
-                _defaultInterstitial!.paidEventHandler = onPaid
-                _defaultInterstitial!.fullScreenContentDelegate = self
-                
-                DispatchQueue.main.async {
-                    NeftaAdapter.onExternalMediationRequestLoad(AdType.interstitial, recommendedAdUnitId: self._recommendedAdUnitId, calculatedFloorPrice: self._calculatedBidFloor, adUnitId: self._defaultInterstitial.adUnitID)
-                    
-                    self.SetInfo("Loaded default interstitial")
-                    self._showButton.isEnabled = true
-                }
-            } catch {
-                NeftaAdapter.onExternalMediationRequestFail(AdType.interstitial, recommendedAdUnitId: self._recommendedAdUnitId, calculatedFloorPrice: self._calculatedBidFloor, adUnitId: self._defaultInterstitial.adUnitID, error: error)
-                
-                SetInfo("Failed to load default interstitial ad with error: \(error.localizedDescription)")
-                
-                _defaultInterstitial = nil
-                
-                if _defaultInterstitial == nil && _recommendedAdUnitId != nil {
-                    Load()
-                }
-            }
-        }
+    private func GetInsightsAndLoad() {
+        _isLoadRequested = true
         
         NeftaPlugin._instance.GetBehaviourInsight([AdUnitIdInsightName, FloorPriceInsightName], callback: OnBehaviourInsight)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            if self._isLoadRequested {
+                self._recommendedAdUnitId = nil
+                self._calculatedBidFloor = 0
+                self.Load()
+            }
+        }
     }
     
     private func OnBehaviourInsight(insights: [String: Insight]) {
@@ -67,34 +50,54 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
             _calculatedBidFloor = floorPriceInsight._float
         }
         
-        print("OnBehaviourInsight for Rewarded recommended AdUnit: \(String(describing: _recommendedAdUnitId)) calculated bid floor:\(_calculatedBidFloor)")
+        print("OnBehaviourInsight for Interstitial: \(String(describing: _recommendedAdUnitId)) calculated bid floor:\(_calculatedBidFloor)")
 
-        if let recommendedAdUnitId = _recommendedAdUnitId, DefaultAdUnitId != recommendedAdUnitId {
-            Task {
-                do {
-                    _recommendedInterstitial = try await GADInterstitialAd.load(withAdUnitID: recommendedAdUnitId, request: GADRequest())
-                    _recommendedInterstitial!.paidEventHandler = onPaid
-                    _recommendedInterstitial!.fullScreenContentDelegate = self
+        if _isLoadRequested {
+            Load()
+        }
+    }
+    
+    private func Load() {
+        _isLoadRequested = false
+        
+        _loadedAdUnitId = DefaultAdUnitId
+        if let recommendedAdUnitId = _recommendedAdUnitId, !recommendedAdUnitId.isEmpty {
+            _loadedAdUnitId = recommendedAdUnitId
+        }
+        
+        SetInfo("Loading Interstitial \(_loadedAdUnitId!)")
+        
+        let adUnitId = _loadedAdUnitId!
+        Task {
+            do {
+                _interstitial = try await GADInterstitialAd.load(withAdUnitID: adUnitId, request: GADRequest())
+                _interstitial!.paidEventHandler = onPaid
+                _interstitial!.fullScreenContentDelegate = self
+                
+                NeftaAdapter.onExternalMediationRequestLoad(AdType.interstitial, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, interstitial: _interstitial)
+                
+                DispatchQueue.main.async {
+                    self.SetInfo("Loaded interstitial \(adUnitId)")
+                    self._showButton.isEnabled = true
+                }
+            } catch {
+                NeftaAdapter.onExternalMediationRequestFail(AdType.interstitial, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error)
+                
+                DispatchQueue.main.async {
+                    self.SetInfo("Failed to load Interstitial \(adUnitId) with error: \(error.localizedDescription)")
                     
-                    DispatchQueue.main.async {
-                        NeftaAdapter.onExternalMediationRequestLoad(AdType.interstitial, recommendedAdUnitId: self._recommendedAdUnitId, calculatedFloorPrice: self._calculatedBidFloor, adUnitId: self._recommendedInterstitial.adUnitID)
-                        
-                        self.SetInfo("Loaded recommended interstitial")
-                        self._showButton.isEnabled = true
-                    }
-                } catch {
-                    NeftaAdapter.onExternalMediationRequestFail(AdType.interstitial, recommendedAdUnitId: self._recommendedAdUnitId, calculatedFloorPrice: self._calculatedBidFloor, adUnitId: self._recommendedInterstitial.adUnitID, error: error)
-                    
-                    SetInfo("Failed to load recommended interstitial ad with error: \(error.localizedDescription)")
-                    
-                    _recommendedInterstitial = nil
-                    
-                    if _defaultInterstitial == nil && _recommendedAdUnitId != nil {
-                        Load()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        self.GetInsightsAndLoad()
                     }
                 }
             }
         }
+    }
+    
+    func onPaid(adValue: GADAdValue) {
+        NeftaAdapter.onExternalMediationImpression(.interstitial, adUnitId: _loadedAdUnitId!, adValue: adValue)
+        
+        SetInfo("onPaid \(adValue)")
     }
     
     init(loadButton: UIButton, showButton: UIButton, status: UILabel, viewController: UIViewController) {
@@ -112,19 +115,11 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
     }
     
     @objc func OnLoadClick() {
-        Load()
+        GetInsightsAndLoad()
     }
     
     @objc func OnShowClick() {
-        SetInfo("Show default: \(String(describing: _defaultInterstitial)) recommended: \(String(describing: _recommendedInterstitial))")
-        
-        if let recommendedInterstitial = _recommendedInterstitial {
-            recommendedInterstitial.present(fromRootViewController: _viewController)
-            _recommendedInterstitial = nil
-        } else if let defaultInterstitial = _defaultInterstitial {
-            defaultInterstitial.present(fromRootViewController: _viewController)
-            _defaultInterstitial = nil
-        }
+        _interstitial.present(fromRootViewController: _viewController)
         
         _showButton.isEnabled = false
     }
@@ -139,11 +134,6 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
 
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         SetInfo("Interstitial ad did dismiss full screen content.")
-    }
-    
-    func onPaid(adValue: GADAdValue) {
-        SetInfo("onPaid \(adValue)")
-        NeftaAdapter.onExternalMediationImpression(adValue)
     }
     
     func SetInfo(_ info: String) {
