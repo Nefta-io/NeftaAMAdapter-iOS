@@ -11,14 +11,8 @@ import GoogleMobileAds
 class Banner : NSObject, GADBannerViewDelegate {
     private let DefaultAdUnitId = "ca-app-pub-1193175835908241/7280922042"
     
-    private let AdUnitIdInsightName = "recommended_banner_ad_unit_id"
-    private let FloorPriceInsightName = "calculated_user_floor_price_banner"
-    
     private var _bannerView: GADBannerView!
-    private var _recommendedAdUnitId: String?
-    private var _calculatedBidFloor: Double = 0.0
-    private var _isLoadRequested = false
-    private var _loadedAdUnitId: String? = nil
+    private var _usedInsight: AdInsight?
     
     private let _showButton: UIButton
     private let _hideButton: UIButton
@@ -27,50 +21,23 @@ class Banner : NSObject, GADBannerViewDelegate {
     private let _bannerPlaceholder: UIView
     
     private func GetInsightsAndLoad() {
-        _isLoadRequested = true
-        
-        NeftaPlugin._instance.GetBehaviourInsight([AdUnitIdInsightName, FloorPriceInsightName], callback: OnBehaviourInsight)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            if self._isLoadRequested {
-                self._recommendedAdUnitId = nil
-                self._calculatedBidFloor = 0
-                self.Load()
-            }
-        }
+        NeftaPlugin._instance.GetInsights(Insights.Banner, callback: Load, timeout: 5)
     }
     
-    private func OnBehaviourInsight(insights: [String: Insight]) {
-        _recommendedAdUnitId = nil
-        _calculatedBidFloor = 0
-        if let recommendedAdUnitInsight = insights[AdUnitIdInsightName] {
-            _recommendedAdUnitId = recommendedAdUnitInsight._string
+    private func Load(insights: Insights) {
+        var selectedAdUnitId = DefaultAdUnitId
+        _usedInsight = insights._banner
+        if let usedInsight = _usedInsight, let recommendedAdUnit = usedInsight._adUnit {
+            selectedAdUnitId = recommendedAdUnit
         }
-        if let bidFloorInsight = insights[FloorPriceInsightName] {
-            _calculatedBidFloor = bidFloorInsight._float
-        }
+        let adUnitToLoad = selectedAdUnitId
         
-        print("OnBehaviourInsight for Banner: \(String(describing: _recommendedAdUnitId)), calculated bid floor: \(_calculatedBidFloor)")
-        
-        if _isLoadRequested {
-            Load()
-        }
-    }
-    
-    private func Load() {
-        _isLoadRequested = false
-        
-        _loadedAdUnitId = DefaultAdUnitId
-        if let recommendedAdUnitId = _recommendedAdUnitId, !recommendedAdUnitId.isEmpty {
-            _loadedAdUnitId = recommendedAdUnitId
-        }
-        
-        SetInfo("Loading Banner \(_loadedAdUnitId!)")
+        SetInfo("Loading Banner: \(adUnitToLoad)")
         
         _bannerView = GADBannerView(adSize: GADAdSizeFromCGSize(CGSize(width: 320, height: 50)))
         _bannerPlaceholder.addSubview(_bannerView)
 
-        _bannerView.adUnitID = _loadedAdUnitId
+        _bannerView.adUnitID = adUnitToLoad
         _bannerView.rootViewController = _viewController
         _bannerView.delegate = self
         _bannerView.paidEventHandler = onPaid
@@ -78,26 +45,26 @@ class Banner : NSObject, GADBannerViewDelegate {
     }
     
     func bannerView(_ ad: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        NeftaAdapter.onExternalMediationRequestFail(AdType.banner, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, adUnitId: _loadedAdUnitId!, error: error)
+        NeftaAdapter.onExternalMediationRequestFail(.banner, adUnitId: ad.adUnitID!, usedInsight: _usedInsight, error: error)
 
         SetInfo("didFailToReceiveAdWithError \(ad): \(error)")
         
         _showButton.isEnabled = true
         _hideButton.isEnabled = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.GetInsightsAndLoad()
-        }
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        //    self.GetInsightsAndLoad()
+        //}
     }
     
     func bannerViewDidReceiveAd(_ ad: GADBannerView) {
-        NeftaAdapter.onExternalMediationRequestLoad(AdType.banner, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, banner: ad)
+        NeftaAdapter.onExternalMediationRequestLoad(withBanner: ad, usedInsight: _usedInsight)
         
         SetInfo("bannerViewDidReceiveAd \(ad)")
     }
     
     func onPaid(adValue: GADAdValue) {
-        NeftaAdapter.onExternalMediationImpression(AdType.banner, adUnitId: _loadedAdUnitId!, adValue: adValue)
+        NeftaAdapter.onExternalMediationImpression(withBanner: _bannerView, adValue: adValue)
         
         SetInfo("onPaid \(adValue)")
     }

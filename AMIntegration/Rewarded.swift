@@ -1,5 +1,5 @@
 //
-//  RewardedVideo.swift
+//  Rewarded.swift
 //  AMIntegration
 //
 //  Created by Tomaz Treven on 28. 06. 24.
@@ -12,14 +12,8 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     
     private let DefaultAdUnitId = "ca-app-pub-1193175835908241/3090611193"
     
-    private let AdUnitIdInsightName = "recommended_rewarded_ad_unit_id"
-    private let FloorPriceInsightName = "calculated_user_floor_price_rewarded"
-    
     private var _rewarded: GADRewardedAd!
-    private var _recommendedAdUnitId: String?
-    private var _calculatedBidFloor: Double = 0.0
-    private var _isLoadRequested = false
-    private var _loadedAdUnitId: String? = nil
+    private var _usedInsight: AdInsight?
     
     private let _loadButton: UIButton
     private let _showButton: UIButton
@@ -27,64 +21,35 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     private let _viewController: UIViewController
     
     private func GetInsightsAndLoad() {
-        _isLoadRequested = true
-        
-        NeftaPlugin._instance.GetBehaviourInsight([AdUnitIdInsightName, FloorPriceInsightName], callback: OnBehaviourInsight)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            if self._isLoadRequested {
-                self._recommendedAdUnitId = nil
-                self._calculatedBidFloor = 0
-                self.Load()
-            }
-        }
+        NeftaPlugin._instance.GetInsights(Insights.Rewarded, callback: Load, timeout: 5)
     }
     
-    func OnBehaviourInsight(insights: [String: Insight]) {
-        _recommendedAdUnitId = nil
-        _calculatedBidFloor = 0
-        if let recommendedAdUnitInsight = insights[AdUnitIdInsightName] {
-            _recommendedAdUnitId = recommendedAdUnitInsight._string
+    private func Load(insights: Insights) {
+        var selectedAdUnitId = DefaultAdUnitId
+        _usedInsight = insights._rewarded
+        if let usedInsight = _usedInsight, let recommendedAdUnit = usedInsight._adUnit {
+            selectedAdUnitId = recommendedAdUnit
         }
-        if let floorPriceInsight = insights[FloorPriceInsightName] {
-            _calculatedBidFloor = floorPriceInsight._float
-        }
+        let adUnitToLoad = selectedAdUnitId
         
-        print("OnBehaviourInsight for Rewarded: \(String(describing: _recommendedAdUnitId)) calculated bid floor:\(_calculatedBidFloor)")
-
-        if _isLoadRequested {
-            Load()
-        }
-    }
-    
-    private func Load() {
-        _isLoadRequested = false
-        
-        _loadedAdUnitId = DefaultAdUnitId
-        if let recommendedAdUnitId = _recommendedAdUnitId, !recommendedAdUnitId.isEmpty {
-            _loadedAdUnitId = recommendedAdUnitId
-        }
-        
-        SetInfo("Loading Rewarded \(_loadedAdUnitId!)")
-        
-        let adUnitId = _loadedAdUnitId!
+        SetInfo("Loading Rewarded \(adUnitToLoad)")
         Task {
             do {
-                _rewarded = try await GADRewardedAd.load(withAdUnitID: adUnitId, request: GADRequest())
+                _rewarded = try await GADRewardedAd.load(withAdUnitID: adUnitToLoad, request: GADRequest())
                 _rewarded!.paidEventHandler = onPaid
                 _rewarded!.fullScreenContentDelegate = self
                 
-                NeftaAdapter.onExternalMediationRequestLoad(AdType.rewarded, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, rewarded: _rewarded)
+                NeftaAdapter.onExternalMediationRequestLoad(withRewarded: _rewarded, usedInsight: _usedInsight)
                 
                 DispatchQueue.main.async {
-                    self.SetInfo("Loaded Rewarded \(adUnitId)")
+                    self.SetInfo("Loaded Rewarded \(adUnitToLoad)")
                     self._showButton.isEnabled = true
                 }
             } catch {
-                NeftaAdapter.onExternalMediationRequestFail(AdType.rewarded, recommendedAdUnitId: _recommendedAdUnitId, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error)
+                NeftaAdapter.onExternalMediationRequestFail(.rewarded, adUnitId: adUnitToLoad, usedInsight: _usedInsight, error: error)
                 
                 DispatchQueue.main.async {
-                    self.SetInfo("Failed to load Rewarded \(adUnitId) with error: \(error.localizedDescription)")
+                    self.SetInfo("Failed to load Rewarded \(adUnitToLoad) with error: \(error.localizedDescription)")
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         self.GetInsightsAndLoad()
@@ -95,7 +60,7 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     }
     
     func onPaid(adValue: GADAdValue) {
-        NeftaAdapter.onExternalMediationImpression(.rewarded, adUnitId: _loadedAdUnitId!, adValue: adValue)
+        NeftaAdapter.onExternalMediationImpression(withRewarded: _rewarded, adValue: adValue)
         
         SetInfo("onPaid \(adValue)")
     }
@@ -115,7 +80,9 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     }
     
     @objc func OnLoadClick() {
+        SetInfo("GetInsightsAndLoad...")
         GetInsightsAndLoad()
+        _loadButton.isEnabled = false
     }
     
     @objc func OnShowClick() {

@@ -7,98 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		689A4BBFCB05DF4A3FF5A4FC /* libPods-AMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E68D17CEFD63586CA9A223ED /* libPods-AMIntegration.a */; };
 		9086F4372CE4D2A400643BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B55E2C2E8FED00E13A98 /* Main.storyboard */; };
 		9086F4382CE4D2A400643BC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B5632C2E8FEE00E13A98 /* LaunchScreen.storyboard */; };
-		909CA6B52D8BF34500312ADB /* GADNeftaExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 909CA6B42D8BF34500312ADB /* GADNeftaExtras.m */; };
 		90A4B5592C2E8FED00E13A98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5582C2E8FED00E13A98 /* AppDelegate.swift */; };
 		90A4B55B2C2E8FED00E13A98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B55A2C2E8FED00E13A98 /* SceneDelegate.swift */; };
 		90A4B55D2C2E8FED00E13A98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B55C2C2E8FED00E13A98 /* ViewController.swift */; };
 		90A4B5622C2E8FEE00E13A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B5612C2E8FEE00E13A98 /* Assets.xcassets */; };
-		90A4B5822C2E91B200E13A98 /* NeftaAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5782C2E91B200E13A98 /* NeftaAdapter.m */; };
 		90A4B5862C2E921300E13A98 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5852C2E921300E13A98 /* Banner.swift */; };
 		90A4B5882C2E922A00E13A98 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5872C2E922A00E13A98 /* Interstitial.swift */; };
 		90A4B58A2C2E923A00E13A98 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5892C2E923A00E13A98 /* Rewarded.swift */; };
-		90A4B58C2C2E928700E13A98 /* NeftaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A4B58B2C2E928700E13A98 /* NeftaSDK.framework */; };
-		90A4B58D2C2E928700E13A98 /* NeftaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90A4B58B2C2E928700E13A98 /* NeftaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		90B9D5712CAE695A004F0561 /* NeftaRewarded.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B9D5702CAE695A004F0561 /* NeftaRewarded.m */; };
-		90B9D5722CAE695A004F0561 /* NeftaInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B9D56E2CAE695A004F0561 /* NeftaInterstitial.m */; };
-		90B9D5732CAE695A004F0561 /* NeftaBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B9D56C2CAE695A004F0561 /* NeftaBanner.m */; };
-		90EB37242DA4FDFF00BC227C /* AdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB37232DA4FDFC00BC227C /* AdUnit.swift */; };
+		A1987ECBB7C7536EF1CE696A /* libPods-AMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7467DD337CC47F2E3F3B6F76 /* libPods-AMIntegration.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		90A4B59E2C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B43874C6CBB50E7134FBEC24BABFE14F;
-			remoteInfo = GoogleUtilities;
-		};
-		90A4B5A02C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 44E291D18340EAC3F761346198515323;
-			remoteInfo = "GoogleUtilities-GoogleUtilities_Privacy";
-		};
-		90A4B5A22C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06FC5C9CF96D60C50FCD47D339C91951;
-			remoteInfo = nanopb;
-		};
-		90A4B5A42C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3227F3FC45681D7CEE5D1355A532398A;
-			remoteInfo = "nanopb-nanopb_Privacy";
-		};
-		90A4B5A62C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0D5F4B93877B6364276670A9B843C7A6;
-			remoteInfo = "Pods-AMIntegration";
-		};
-		90A4B5A82C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3347A1AB6546F0A3977529B8F199DC41;
-			remoteInfo = PromisesObjC;
-		};
-		90A4B5AA2C2E9EF000E13A98 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3F238BB22C5201CE689CAF2F766AED95;
-			remoteInfo = "PromisesObjC-FBLPromises_Privacy";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		90A4B58E2C2E928700E13A98 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				90A4B58D2C2E928700E13A98 /* NeftaSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		530AB90BDED268CFD0D201EF /* Pods-AMIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.debug.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.debug.xcconfig"; sourceTree = "<group>"; };
-		55DD13009C727D6CF1F774DF /* Pods-AMIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.release.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.release.xcconfig"; sourceTree = "<group>"; };
+		7467DD337CC47F2E3F3B6F76 /* libPods-AMIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78BDA395272D32642ADC074F /* Pods-AMIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.debug.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.debug.xcconfig"; sourceTree = "<group>"; };
 		909CA62A2D86A2DF00312ADB /* AMIntegration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMIntegration-Bridging-Header.h"; sourceTree = "<group>"; };
-		909CA6B32D8BF34500312ADB /* GADNeftaExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADNeftaExtras.h; sourceTree = "<group>"; };
-		909CA6B42D8BF34500312ADB /* GADNeftaExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADNeftaExtras.m; sourceTree = "<group>"; };
 		90A4B5552C2E8FED00E13A98 /* AMIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A4B5582C2E8FED00E13A98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90A4B55A2C2E8FED00E13A98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,24 +30,13 @@
 		90A4B55F2C2E8FED00E13A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90A4B5612C2E8FEE00E13A98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90A4B5642C2E8FEE00E13A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		90A4B5732C2E91B200E13A98 /* AMAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMAdapter.h; sourceTree = "<group>"; };
-		90A4B5772C2E91B200E13A98 /* NeftaAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeftaAdapter.h; sourceTree = "<group>"; };
-		90A4B5782C2E91B200E13A98 /* NeftaAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeftaAdapter.m; sourceTree = "<group>"; };
 		90A4B5852C2E921300E13A98 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		90A4B5872C2E922A00E13A98 /* Interstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
 		90A4B5892C2E923A00E13A98 /* Rewarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
 		90A4B58B2C2E928700E13A98 /* NeftaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NeftaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A4B58F2C2E9E2200E13A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AMAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		90B9D56B2CAE695A004F0561 /* NeftaBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeftaBanner.h; sourceTree = "<group>"; };
-		90B9D56C2CAE695A004F0561 /* NeftaBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NeftaBanner.m; sourceTree = "<group>"; };
-		90B9D56D2CAE695A004F0561 /* NeftaInterstitial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeftaInterstitial.h; sourceTree = "<group>"; };
-		90B9D56E2CAE695A004F0561 /* NeftaInterstitial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NeftaInterstitial.m; sourceTree = "<group>"; };
-		90B9D56F2CAE695A004F0561 /* NeftaRewarded.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeftaRewarded.h; sourceTree = "<group>"; };
-		90B9D5702CAE695A004F0561 /* NeftaRewarded.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NeftaRewarded.m; sourceTree = "<group>"; };
-		90EB37232DA4FDFC00BC227C /* AdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdUnit.swift; sourceTree = "<group>"; };
-		E68D17CEFD63586CA9A223ED /* libPods-AMIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A4609E6F785DE3C18A00D0 /* Pods-AMIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.release.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A4B58C2C2E928700E13A98 /* NeftaSDK.framework in Frameworks */,
-				689A4BBFCB05DF4A3FF5A4FC /* libPods-AMIntegration.a in Frameworks */,
+				A1987ECBB7C7536EF1CE696A /* libPods-AMIntegration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +56,7 @@
 			children = (
 				90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */,
 				90A4B58B2C2E928700E13A98 /* NeftaSDK.framework */,
-				E68D17CEFD63586CA9A223ED /* libPods-AMIntegration.a */,
+				7467DD337CC47F2E3F3B6F76 /* libPods-AMIntegration.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,9 +64,7 @@
 		90A4B54C2C2E8FED00E13A98 = {
 			isa = PBXGroup;
 			children = (
-				90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */,
 				90A4B58F2C2E9E2200E13A98 /* Info.plist */,
-				90A4B57E2C2E91B200E13A98 /* AMAdapter */,
 				90A4B5572C2E8FED00E13A98 /* AMIntegration */,
 				90A4B5562C2E8FED00E13A98 /* Products */,
 				A552E92FFB4C8D50872A3B4A /* Pods */,
@@ -173,7 +83,6 @@
 		90A4B5572C2E8FED00E13A98 /* AMIntegration */ = {
 			isa = PBXGroup;
 			children = (
-				90EB37232DA4FDFC00BC227C /* AdUnit.swift */,
 				909CA62A2D86A2DF00312ADB /* AMIntegration-Bridging-Header.h */,
 				90A4B5582C2E8FED00E13A98 /* AppDelegate.swift */,
 				90A4B55A2C2E8FED00E13A98 /* SceneDelegate.swift */,
@@ -188,44 +97,11 @@
 			path = AMIntegration;
 			sourceTree = "<group>";
 		};
-		90A4B57E2C2E91B200E13A98 /* AMAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				909CA6B32D8BF34500312ADB /* GADNeftaExtras.h */,
-				909CA6B42D8BF34500312ADB /* GADNeftaExtras.m */,
-				90B9D56B2CAE695A004F0561 /* NeftaBanner.h */,
-				90B9D56C2CAE695A004F0561 /* NeftaBanner.m */,
-				90B9D56D2CAE695A004F0561 /* NeftaInterstitial.h */,
-				90B9D56E2CAE695A004F0561 /* NeftaInterstitial.m */,
-				90B9D56F2CAE695A004F0561 /* NeftaRewarded.h */,
-				90B9D5702CAE695A004F0561 /* NeftaRewarded.m */,
-				90A4B5732C2E91B200E13A98 /* AMAdapter.h */,
-				90A4B5772C2E91B200E13A98 /* NeftaAdapter.h */,
-				90A4B5782C2E91B200E13A98 /* NeftaAdapter.m */,
-			);
-			name = AMAdapter;
-			path = ../AMAdapter/AMAdapter;
-			sourceTree = "<group>";
-		};
-		90A4B5922C2E9EF000E13A98 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				90A4B59F2C2E9EF000E13A98 /* libGoogleUtilities.a */,
-				90A4B5A12C2E9EF000E13A98 /* GoogleUtilities_Privacy.bundle */,
-				90A4B5A32C2E9EF000E13A98 /* libnanopb.a */,
-				90A4B5A52C2E9EF000E13A98 /* nanopb_Privacy.bundle */,
-				90A4B5A72C2E9EF000E13A98 /* libPods-AMIntegration.a */,
-				90A4B5A92C2E9EF000E13A98 /* libPromisesObjC.a */,
-				90A4B5AB2C2E9EF000E13A98 /* FBLPromises_Privacy.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A552E92FFB4C8D50872A3B4A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				530AB90BDED268CFD0D201EF /* Pods-AMIntegration.debug.xcconfig */,
-				55DD13009C727D6CF1F774DF /* Pods-AMIntegration.release.xcconfig */,
+				78BDA395272D32642ADC074F /* Pods-AMIntegration.debug.xcconfig */,
+				95A4609E6F785DE3C18A00D0 /* Pods-AMIntegration.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -237,12 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90A4B5692C2E8FEE00E13A98 /* Build configuration list for PBXNativeTarget "AMIntegration" */;
 			buildPhases = (
-				EEA5E476E21C44F49EC6BCE7 /* [CP] Check Pods Manifest.lock */,
+				C64B61E2174F1AF7D88D5E70 /* [CP] Check Pods Manifest.lock */,
 				90A4B5512C2E8FED00E13A98 /* Sources */,
 				90A4B5522C2E8FED00E13A98 /* Frameworks */,
 				90A4B5532C2E8FED00E13A98 /* Resources */,
-				90A4B58E2C2E928700E13A98 /* Embed Frameworks */,
-				92AC8A878DF4CD7B256F104A /* [CP] Copy Pods Resources */,
+				9FBC8A9ED04962377DA50532 /* [CP] Embed Pods Frameworks */,
+				878E5EB669DEF162E8BC595F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,70 +155,12 @@
 			mainGroup = 90A4B54C2C2E8FED00E13A98;
 			productRefGroup = 90A4B5562C2E8FED00E13A98 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 90A4B5922C2E9EF000E13A98 /* Products */;
-					ProjectRef = 90A4B5912C2E9EF000E13A98 /* Pods.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				90A4B5542C2E8FED00E13A98 /* AMIntegration */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		90A4B59F2C2E9EF000E13A98 /* libGoogleUtilities.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGoogleUtilities.a;
-			remoteRef = 90A4B59E2C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		90A4B5A12C2E9EF000E13A98 /* GoogleUtilities_Privacy.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GoogleUtilities_Privacy.bundle;
-			remoteRef = 90A4B5A02C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		90A4B5A32C2E9EF000E13A98 /* libnanopb.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libnanopb.a;
-			remoteRef = 90A4B5A22C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		90A4B5A52C2E9EF000E13A98 /* nanopb_Privacy.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = nanopb_Privacy.bundle;
-			remoteRef = 90A4B5A42C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		90A4B5A72C2E9EF000E13A98 /* libPods-AMIntegration.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-AMIntegration.a";
-			remoteRef = 90A4B5A62C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		90A4B5A92C2E9EF000E13A98 /* libPromisesObjC.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPromisesObjC.a;
-			remoteRef = 90A4B5A82C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		90A4B5AB2C2E9EF000E13A98 /* FBLPromises_Privacy.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FBLPromises_Privacy.bundle;
-			remoteRef = 90A4B5AA2C2E9EF000E13A98 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		90A4B5532C2E8FED00E13A98 /* Resources */ = {
@@ -358,15 +176,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		92AC8A878DF4CD7B256F104A /* [CP] Copy Pods Resources */ = {
+		878E5EB669DEF162E8BC595F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
@@ -377,7 +193,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EEA5E476E21C44F49EC6BCE7 /* [CP] Check Pods Manifest.lock */ = {
+		9FBC8A9ED04962377DA50532 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C64B61E2174F1AF7D88D5E70 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -407,17 +240,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				90A4B58A2C2E923A00E13A98 /* Rewarded.swift in Sources */,
-				90B9D5712CAE695A004F0561 /* NeftaRewarded.m in Sources */,
-				90B9D5722CAE695A004F0561 /* NeftaInterstitial.m in Sources */,
-				90B9D5732CAE695A004F0561 /* NeftaBanner.m in Sources */,
 				90A4B5882C2E922A00E13A98 /* Interstitial.swift in Sources */,
 				90A4B55D2C2E8FED00E13A98 /* ViewController.swift in Sources */,
 				90A4B5862C2E921300E13A98 /* Banner.swift in Sources */,
 				90A4B5592C2E8FED00E13A98 /* AppDelegate.swift in Sources */,
-				909CA6B52D8BF34500312ADB /* GADNeftaExtras.m in Sources */,
-				90EB37242DA4FDFF00BC227C /* AdUnit.swift in Sources */,
 				90A4B55B2C2E8FED00E13A98 /* SceneDelegate.swift in Sources */,
-				90A4B5822C2E91B200E13A98 /* NeftaAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,12 +391,12 @@
 		};
 		90A4B56A2C2E8FEE00E13A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 530AB90BDED268CFD0D201EF /* Pods-AMIntegration.debug.xcconfig */;
+			baseConfigurationReference = 78BDA395272D32642ADC074F /* Pods-AMIntegration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 180;
+				CURRENT_PROJECT_VERSION = 193;
 				DEVELOPMENT_TEAM = 2LJ985962L;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -584,7 +411,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.7;
+				MARKETING_VERSION = 4.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nefta.am;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -596,7 +423,7 @@
 		};
 		90A4B56B2C2E8FEE00E13A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55DD13009C727D6CF1F774DF /* Pods-AMIntegration.release.xcconfig */;
+			baseConfigurationReference = 95A4609E6F785DE3C18A00D0 /* Pods-AMIntegration.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -616,7 +443,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.7;
+				MARKETING_VERSION = 4.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nefta.am;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -6,4 +6,5 @@ workspace 'NeftaAMIntegration'
 target 'AMIntegration' do
   project 'AMIntegration.xcodeproj'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'NeftaAMAdapter', :path => '.'
 end
