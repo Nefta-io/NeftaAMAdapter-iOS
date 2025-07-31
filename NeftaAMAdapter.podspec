@@ -13,6 +13,8 @@ Pod::Spec.new do |s|
 
   s.source_files     = 'NeftaAMAdapter/**/GAD*.{h,m}'
 
+  s.static_framework = true
+
   s.dependency 'NeftaSDK', '= 4.3.0'
   s.dependency 'Google-Mobile-Ads-SDK', '>= 8.0.0'
 end

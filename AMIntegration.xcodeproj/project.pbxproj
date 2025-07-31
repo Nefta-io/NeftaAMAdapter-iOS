@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B3C0AFE38DA434B76704F7C /* libPods-AMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C9592F190ACDBC9BEDB2B2 /* libPods-AMIntegration.a */; };
 		9086F4372CE4D2A400643BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B55E2C2E8FED00E13A98 /* Main.storyboard */; };
 		9086F4382CE4D2A400643BC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B5632C2E8FEE00E13A98 /* LaunchScreen.storyboard */; };
 		90A4B5592C2E8FED00E13A98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5582C2E8FED00E13A98 /* AppDelegate.swift */; };
@@ -17,6 +16,7 @@
 		90A4B5862C2E921300E13A98 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5852C2E921300E13A98 /* Banner.swift */; };
 		90A4B5882C2E922A00E13A98 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5872C2E922A00E13A98 /* Interstitial.swift */; };
 		90A4B58A2C2E923A00E13A98 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5892C2E923A00E13A98 /* Rewarded.swift */; };
+		E59B1D2E24B000B617250273 /* libPods-AMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B5904413AF5E8BB009750 /* libPods-AMIntegration.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		90A4B5892C2E923A00E13A98 /* Rewarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
 		90A4B58F2C2E9E2200E13A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AMAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1C9592F190ACDBC9BEDB2B2 /* libPods-AMIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		925B5904413AF5E8BB009750 /* libPods-AMIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B3C0AFE38DA434B76704F7C /* libPods-AMIntegration.a in Frameworks */,
+				E59B1D2E24B000B617250273 /* libPods-AMIntegration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */,
-				B1C9592F190ACDBC9BEDB2B2 /* libPods-AMIntegration.a */,
+				925B5904413AF5E8BB009750 /* libPods-AMIntegration.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
