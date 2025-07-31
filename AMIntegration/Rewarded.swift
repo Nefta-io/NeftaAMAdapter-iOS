@@ -14,6 +14,7 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     
     private var _rewarded: GADRewardedAd!
     private var _usedInsight: AdInsight?
+    private var _isLoading = false
     
     private let _loadButton: UIButton
     private let _showButton: UIButton
@@ -39,20 +40,25 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
                 _rewarded!.paidEventHandler = onPaid
                 _rewarded!.fullScreenContentDelegate = self
                 
-                NeftaAdapter.onExternalMediationRequestLoad(withRewarded: _rewarded, usedInsight: _usedInsight)
+                GADNeftaAdapter.onExternalMediationRequestLoad(withRewarded: _rewarded, usedInsight: _usedInsight)
                 
                 DispatchQueue.main.async {
                     self.SetInfo("Loaded Rewarded \(adUnitToLoad)")
+                    
+                    self.SetLoadingButton(isLoading: false)
+                    self._loadButton.isEnabled = false
                     self._showButton.isEnabled = true
                 }
             } catch {
-                NeftaAdapter.onExternalMediationRequestFail(.rewarded, adUnitId: adUnitToLoad, usedInsight: _usedInsight, error: error)
+                GADNeftaAdapter.onExternalMediationRequestFail(.rewarded, adUnitId: adUnitToLoad, usedInsight: _usedInsight, error: error)
                 
                 DispatchQueue.main.async {
                     self.SetInfo("Failed to load Rewarded \(adUnitToLoad) with error: \(error.localizedDescription)")
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        self.GetInsightsAndLoad()
+                        if self._isLoading {
+                            self.GetInsightsAndLoad()
+                        }
                     }
                 }
             }
@@ -60,7 +66,7 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     }
     
     func onPaid(adValue: GADAdValue) {
-        NeftaAdapter.onExternalMediationImpression(withRewarded: _rewarded, adValue: adValue)
+        GADNeftaAdapter.onExternalMediationImpression(withRewarded: _rewarded, adValue: adValue)
         
         SetInfo("onPaid \(adValue)")
     }
@@ -80,9 +86,13 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     }
     
     @objc func OnLoadClick() {
-        SetInfo("GetInsightsAndLoad...")
-        GetInsightsAndLoad()
-        _loadButton.isEnabled = false
+        if _isLoading {
+            SetLoadingButton(isLoading: false)
+        } else {
+            SetInfo("GetInsightsAndLoad...")
+            GetInsightsAndLoad()
+            SetLoadingButton(isLoading: true)
+        }
     }
     
     @objc func OnShowClick() {
@@ -91,6 +101,7 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
             self.SetInfo("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
         }
         
+        _loadButton.isEnabled = true
         _showButton.isEnabled = false
     }
     
@@ -109,5 +120,14 @@ class Rewarded : NSObject, GADFullScreenContentDelegate {
     private func SetInfo(_ info: String) {
         print(info)
         _status.text = info
+    }
+    
+    private func SetLoadingButton(isLoading: Bool) {
+        _isLoading = isLoading
+        if isLoading {
+            _loadButton.setTitle("Cancel", for: .normal)
+        } else {
+            _loadButton.setTitle("Load Rewarded", for: .normal)
+        }
     }
 }

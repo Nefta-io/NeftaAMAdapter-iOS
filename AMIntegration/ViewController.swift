@@ -33,16 +33,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NeftaPlugin.EnableLogging(enable: true)
         let arguments = ProcessInfo.processInfo.arguments
         if arguments.count > 1 {
             NeftaPlugin.SetOverride(url: arguments[1])
         }
         
-        _plugin = NeftaPlugin.Init(appId: "5661184053215232")
+        NeftaPlugin.EnableLogging(enable: true)
+        _plugin = NeftaPlugin.Init(appId: "5731414989340672")
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         GADMobileAds.sharedInstance().requestConfiguration.maxAdContentRating = .teen
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "284dcf66160f8ea305826b4cc2abe58e" ]
         
         _title.text = "Nefta Adapter for AdMob"
         _banner = Banner(showButton: _showBanner, hideButton: _hideBanner, status: _bannerStatus, viewController: self, bannerPlaceholder: _bannerPlaceholder)

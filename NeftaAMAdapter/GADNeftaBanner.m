@@ -1,5 +1,5 @@
-#import "NeftaBanner.h"
-#import "NeftaAdapter.h"
+#import "GADNeftaBanner.h"
+#import "GADNeftaAdapter.h"
 
 static NSString* _lastCreativeId;
 static NSString* _lastAuctionId;
@@ -19,7 +19,7 @@ static NSString* _lastAuctionId;
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-    _listener(nil, [NeftaAdapter NLoadToAdapterError: error]);
+    _listener(nil, [GADNeftaAdapter NLoadToAdapterError: error]);
 }
 
 - (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {

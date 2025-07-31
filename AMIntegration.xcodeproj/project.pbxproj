@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3C0AFE38DA434B76704F7C /* libPods-AMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C9592F190ACDBC9BEDB2B2 /* libPods-AMIntegration.a */; };
 		9086F4372CE4D2A400643BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B55E2C2E8FED00E13A98 /* Main.storyboard */; };
 		9086F4382CE4D2A400643BC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B5632C2E8FEE00E13A98 /* LaunchScreen.storyboard */; };
 		90A4B5592C2E8FED00E13A98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5582C2E8FED00E13A98 /* AppDelegate.swift */; };
@@ -16,12 +17,11 @@
 		90A4B5862C2E921300E13A98 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5852C2E921300E13A98 /* Banner.swift */; };
 		90A4B5882C2E922A00E13A98 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5872C2E922A00E13A98 /* Interstitial.swift */; };
 		90A4B58A2C2E923A00E13A98 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5892C2E923A00E13A98 /* Rewarded.swift */; };
-		A1987ECBB7C7536EF1CE696A /* libPods-AMIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7467DD337CC47F2E3F3B6F76 /* libPods-AMIntegration.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7467DD337CC47F2E3F3B6F76 /* libPods-AMIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78BDA395272D32642ADC074F /* Pods-AMIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.debug.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.debug.xcconfig"; sourceTree = "<group>"; };
+		1A5CE8C7CB63F035BE60656D /* Pods-AMIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.release.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.release.xcconfig"; sourceTree = "<group>"; };
+		2CCAC4728122FB05AE12FB7D /* Pods-AMIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.debug.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.debug.xcconfig"; sourceTree = "<group>"; };
 		909CA62A2D86A2DF00312ADB /* AMIntegration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMIntegration-Bridging-Header.h"; sourceTree = "<group>"; };
 		90A4B5552C2E8FED00E13A98 /* AMIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A4B5582C2E8FED00E13A98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,10 +33,9 @@
 		90A4B5852C2E921300E13A98 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		90A4B5872C2E922A00E13A98 /* Interstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
 		90A4B5892C2E923A00E13A98 /* Rewarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
-		90A4B58B2C2E928700E13A98 /* NeftaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NeftaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A4B58F2C2E9E2200E13A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AMAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		95A4609E6F785DE3C18A00D0 /* Pods-AMIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMIntegration.release.xcconfig"; path = "Target Support Files/Pods-AMIntegration/Pods-AMIntegration.release.xcconfig"; sourceTree = "<group>"; };
+		B1C9592F190ACDBC9BEDB2B2 /* libPods-AMIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1987ECBB7C7536EF1CE696A /* libPods-AMIntegration.a in Frameworks */,
+				0B3C0AFE38DA434B76704F7C /* libPods-AMIntegration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */,
-				90A4B58B2C2E928700E13A98 /* NeftaSDK.framework */,
-				7467DD337CC47F2E3F3B6F76 /* libPods-AMIntegration.a */,
+				B1C9592F190ACDBC9BEDB2B2 /* libPods-AMIntegration.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,8 +98,8 @@
 		A552E92FFB4C8D50872A3B4A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				78BDA395272D32642ADC074F /* Pods-AMIntegration.debug.xcconfig */,
-				95A4609E6F785DE3C18A00D0 /* Pods-AMIntegration.release.xcconfig */,
+				2CCAC4728122FB05AE12FB7D /* Pods-AMIntegration.debug.xcconfig */,
+				1A5CE8C7CB63F035BE60656D /* Pods-AMIntegration.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -113,12 +111,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90A4B5692C2E8FEE00E13A98 /* Build configuration list for PBXNativeTarget "AMIntegration" */;
 			buildPhases = (
-				C64B61E2174F1AF7D88D5E70 /* [CP] Check Pods Manifest.lock */,
+				91A19E095A4D5B96B214A8F5 /* [CP] Check Pods Manifest.lock */,
 				90A4B5512C2E8FED00E13A98 /* Sources */,
 				90A4B5522C2E8FED00E13A98 /* Frameworks */,
 				90A4B5532C2E8FED00E13A98 /* Resources */,
-				9FBC8A9ED04962377DA50532 /* [CP] Embed Pods Frameworks */,
-				878E5EB669DEF162E8BC595F /* [CP] Copy Pods Resources */,
+				A8E0B027C024EF5527F4BB6B /* [CP] Embed Pods Frameworks */,
+				AFB5EB9FFFAD95A13E425879 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,41 +174,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		878E5EB669DEF162E8BC595F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FBC8A9ED04962377DA50532 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C64B61E2174F1AF7D88D5E70 /* [CP] Check Pods Manifest.lock */ = {
+		91A19E095A4D5B96B214A8F5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -230,6 +194,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8E0B027C024EF5527F4BB6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFB5EB9FFFAD95A13E425879 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMIntegration/Pods-AMIntegration-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -391,12 +389,12 @@
 		};
 		90A4B56A2C2E8FEE00E13A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78BDA395272D32642ADC074F /* Pods-AMIntegration.debug.xcconfig */;
+			baseConfigurationReference = 2CCAC4728122FB05AE12FB7D /* Pods-AMIntegration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 193;
+				CURRENT_PROJECT_VERSION = 194;
 				DEVELOPMENT_TEAM = 2LJ985962L;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -405,6 +403,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -423,7 +422,7 @@
 		};
 		90A4B56B2C2E8FEE00E13A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95A4609E6F785DE3C18A00D0 /* Pods-AMIntegration.release.xcconfig */;
+			baseConfigurationReference = 1A5CE8C7CB63F035BE60656D /* Pods-AMIntegration.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -437,6 +436,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

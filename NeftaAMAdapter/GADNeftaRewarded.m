@@ -1,42 +1,41 @@
-#import "NeftaInterstitial.h"
-#import "NeftaAdapter.h"
+#import "GADNeftaRewarded.h"
+#import "GADNeftaAdapter.h"
 
 static NSString* _lastCreativeId;
 static NSString* _lastAuctionId;
 
-@implementation NeftaInterstitial
+@implementation NeftaRewarded
 
-+ (instancetype)Init:(NSString *)id listener:(nonnull GADMediationInterstitialLoadCompletionHandler)listener errorDomain:(NSString *_Nonnull)errorDomain {
-    NeftaInterstitial *instance = [[self alloc] init];
-    instance.interstitial = [[NInterstitial alloc] initWithId: id];
++ (instancetype)Init:(NSString *)id listener:(nonnull GADMediationRewardedLoadCompletionHandler)listener errorDomain:(NSString *_Nonnull)errorDomain {
+    NeftaRewarded *instance = [[self alloc] init];
+    instance.rewarded = [[NRewarded alloc] initWithId: id];
     instance.listener = listener;
-    instance.errorDomain = errorDomain;
-    instance.interstitial._listener = instance;
+    instance.rewarded._listener = instance;
     return instance;
 }
 
 - (void)Load {
-    [_interstitial Load];
+    [_rewarded Load];
 }
 
 - (void)presentFromViewController:(nonnull UIViewController *)viewController {
-    int status = (int) [_interstitial CanShow];
+    int status = (int) [_rewarded CanShow];
     if (status != NAd.Ready) {
         NSError *showError = [NSError errorWithDomain: _errorDomain
-                                             code: status
-                                         userInfo: @{NSLocalizedDescriptionKey : @"Ad not ready."}];
-        [_adEventDelegate didFailToPresentWithError:showError];
+                                                 code: status
+                                             userInfo: @{NSLocalizedDescriptionKey : @"Ad not ready."}];
+        [_adEventDelegate didFailToPresentWithError: showError];
         return;
     }
 
     if (_extras != nil && _extras.muteAudio) {
-        [_interstitial Mute: true];
+        [_rewarded Mute: true];
     }
-    [_interstitial Show: viewController];
+    [_rewarded Show: viewController];
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-    _listener(nil, [NeftaAdapter NLoadToAdapterError: error]);
+    _listener(nil, [GADNeftaAdapter NLoadToAdapterError: error]);
 }
 
 - (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
@@ -60,8 +59,21 @@ static NSString* _lastAuctionId;
     [_adEventDelegate reportClick];
 }
 
+- (void)OnRewardWithAd:(NAd * _Nonnull)ad {
+    [_adEventDelegate didRewardUser];
+}
+
 - (void)OnCloseWithAd:(NAd * _Nonnull)ad {
     [_adEventDelegate didDismissFullScreenView];
+}
+
+
+- (void)didCompleteRewardedVideoForAdWithAd:(NAd * _Nonnull)ad { 
+    
+}
+
+- (void)didStartRewardedVideoForAdWithAd:(NAd * _Nonnull)ad { 
+    
 }
 
 + (NSString*) GetLastAuctionId {
@@ -71,5 +83,3 @@ static NSString* _lastAuctionId;
     return _lastCreativeId;
 }
 @end
-
-

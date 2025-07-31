@@ -45,7 +45,7 @@ class Banner : NSObject, GADBannerViewDelegate {
     }
     
     func bannerView(_ ad: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        NeftaAdapter.onExternalMediationRequestFail(.banner, adUnitId: ad.adUnitID!, usedInsight: _usedInsight, error: error)
+        GADNeftaAdapter.onExternalMediationRequestFail(.banner, adUnitId: ad.adUnitID!, usedInsight: _usedInsight, error: error)
 
         SetInfo("didFailToReceiveAdWithError \(ad): \(error)")
         
@@ -58,13 +58,13 @@ class Banner : NSObject, GADBannerViewDelegate {
     }
     
     func bannerViewDidReceiveAd(_ ad: GADBannerView) {
-        NeftaAdapter.onExternalMediationRequestLoad(withBanner: ad, usedInsight: _usedInsight)
+        GADNeftaAdapter.onExternalMediationRequestLoad(withBanner: ad, usedInsight: _usedInsight)
         
         SetInfo("bannerViewDidReceiveAd \(ad)")
     }
     
     func onPaid(adValue: GADAdValue) {
-        NeftaAdapter.onExternalMediationImpression(withBanner: _bannerView, adValue: adValue)
+        GADNeftaAdapter.onExternalMediationImpression(withBanner: _bannerView, adValue: adValue)
         
         SetInfo("onPaid \(adValue)")
     }

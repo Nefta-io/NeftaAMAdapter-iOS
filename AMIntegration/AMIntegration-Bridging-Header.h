@@ -5,4 +5,4 @@
 //  Created by Tomaz Treven on 16. 3. 25.
 //
 
-#import "NeftaAdapter.h"
+#import "GADNeftaAdapter.h"

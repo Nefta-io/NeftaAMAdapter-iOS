@@ -4,7 +4,7 @@
 #import "GADNeftaExtras.h"
 #import <NeftaSDK/NeftaSDK-Swift.h>
 
-@interface NeftaAdapter : NSObject <GADMediationAdapter>
+@interface GADNeftaAdapter : NSObject <GADMediationAdapter>
 typedef NS_ENUM(NSInteger, NeftaAdapterErrorCode) {
     NeftaAdapterErrorCodeInvalidServerParameters = 101,
     NeftaAdapterErrorCodeAdNotReady = 102,
@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, AdType) {
 + (void)OnExternalMediationImpressionWithBanner:(GADBannerView * _Nonnull)banner adValue:(GADAdValue* _Nonnull)adValue;
 + (void)OnExternalMediationImpressionWithInterstitial:(GADInterstitialAd * _Nonnull)interstitial adValue:(GADAdValue* _Nonnull)adValue;
 + (void)OnExternalMediationImpressionWithRewarded:(GADRewardedAd * _Nonnull)rewarded adValue:(GADAdValue* _Nonnull)adValue;
+
++ (void)OnExternalMediationImpressionAsString:(int)adType network:(NSString * _Nonnull)network data:(NSString * _Nonnull)data revenue:(double)revenue precision:(NSString * _Nonnull) precision;
 
 + (NSError *_Nonnull) NLoadToAdapterError:(NError *_Nonnull)error;
 @end

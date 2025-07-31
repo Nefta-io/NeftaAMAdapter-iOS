@@ -1,26 +1,26 @@
-#import "NeftaAdapter.h"
-#import "NeftaBanner.h"
-#import "NeftaInterstitial.h"
-#import "NeftaRewarded.h"
+#import "GADNeftaAdapter.h"
+#import "GADNeftaBanner.h"
+#import "GADNeftaInterstitial.h"
+#import "GADNeftaRewarded.h"
 
 NSString * const _mediationProvider = @"google-admob";
 
-@implementation NeftaAdapter
+@implementation GADNeftaAdapter
 
 + (Class<GADAdNetworkExtras>)networkExtrasClass {
     return [GADNeftaExtras class];
 }
 
 +(void) OnExternalMediationRequestLoadWithBanner:(GADBannerView * _Nonnull)banner usedInsight:(AdInsight * _Nullable)usedInsight {
-    [NeftaAdapter OnExternalMediationRequest: AdTypeBanner adUnitId: banner.adUnitID insight: usedInsight status: 1 providerStatus: nil networkStatus: nil];
+    [GADNeftaAdapter OnExternalMediationRequest: AdTypeBanner adUnitId: banner.adUnitID insight: usedInsight status: 1 providerStatus: nil networkStatus: nil];
 }
 
 +(void) OnExternalMediationRequestLoadWithInterstitial:(GADInterstitialAd * _Nonnull)interstitial usedInsight:(AdInsight * _Nullable)usedInsight {
-    [NeftaAdapter OnExternalMediationRequest: AdTypeInterstitial adUnitId: interstitial.adUnitID insight: usedInsight status: 1 providerStatus: nil networkStatus: nil];
+    [GADNeftaAdapter OnExternalMediationRequest: AdTypeInterstitial adUnitId: interstitial.adUnitID insight: usedInsight status: 1 providerStatus: nil networkStatus: nil];
 }
 
 +(void) OnExternalMediationRequestLoadWithRewarded:(GADRewardedAd * _Nonnull)rewarded usedInsight:(AdInsight * _Nullable)usedInsight {
-    [NeftaAdapter OnExternalMediationRequest: AdTypeRewarded adUnitId: rewarded.adUnitID insight: usedInsight status: 1 providerStatus: nil networkStatus: nil];
+    [GADNeftaAdapter OnExternalMediationRequest: AdTypeRewarded adUnitId: rewarded.adUnitID insight: usedInsight status: 1 providerStatus: nil networkStatus: nil];
 }
 
 +(void) OnExternalMediationRequestFail:(AdType)adType adUnitId:(NSString *)adUnitId usedInsight:(AdInsight * _Nullable)usedInsight error:(NSError *)error {
@@ -41,7 +41,7 @@ NSString * const _mediationProvider = @"google-admob";
         }
     }
     
-    [NeftaAdapter OnExternalMediationRequest: adType adUnitId: adUnitId insight: usedInsight status: status providerStatus: providerStatus networkStatus: networkStatus];
+    [GADNeftaAdapter OnExternalMediationRequest: adType adUnitId: adUnitId insight: usedInsight status: status providerStatus: providerStatus networkStatus: networkStatus];
 }
 
 +(void) OnExternalMediationRequest:(AdType)adType adUnitId:(NSString *)adUnitId insight:(AdInsight * _Nullable)insight status:(int)status providerStatus:(NSString *)providerStatus networkStatus:(NSString *)networkStatus {
@@ -59,15 +59,15 @@ NSString * const _mediationProvider = @"google-admob";
 }
 
 +(void) OnExternalMediationImpressionWithBanner:(GADBannerView * _Nonnull)banner adValue:(GADAdValue*)adValue {
-    [NeftaAdapter OnExternalMediationImpression: 1 adUnitId: banner.adUnitID responseInfo: banner.responseInfo adValue: adValue];
+    [GADNeftaAdapter OnExternalMediationImpression: 1 adUnitId: banner.adUnitID responseInfo: banner.responseInfo adValue: adValue];
 }
 
 +(void) OnExternalMediationImpressionWithInterstitial:(GADInterstitialAd * _Nonnull)interstitial adValue:(GADAdValue*)adValue {
-    [NeftaAdapter OnExternalMediationImpression: 2 adUnitId: interstitial.adUnitID responseInfo: interstitial.responseInfo adValue: adValue];
+    [GADNeftaAdapter OnExternalMediationImpression: 2 adUnitId: interstitial.adUnitID responseInfo: interstitial.responseInfo adValue: adValue];
 }
 
 +(void) OnExternalMediationImpressionWithRewarded:(GADRewardedAd * _Nonnull)rewarded adValue:(GADAdValue*)adValue {
-    [NeftaAdapter OnExternalMediationImpression: 3 adUnitId: rewarded.adUnitID responseInfo: rewarded.responseInfo adValue: adValue];
+    [GADNeftaAdapter OnExternalMediationImpression: 3 adUnitId: rewarded.adUnitID responseInfo: rewarded.responseInfo adValue: adValue];
 }
 
 +(void) OnExternalMediationImpression:(int)type adUnitId:(NSString *)adUnitId responseInfo:(GADResponseInfo * _Nullable)responseInfo adValue:(GADAdValue*)adValue {
@@ -268,75 +268,3 @@ static NeftaPlugin *_plugin;
 }
 
 @end
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-    typedef void (*OnInsights)(int requestId, const char *insights);
-    
-    void EnableLogging(bool enable);
-    void NeftaPlugin_Init(const char *appId, OnInsights onInsights);
-    void NeftaPlugin_Record(int type, int category, int subCategory, const char *name, long value, const char *customPayload);
-    void NeftaPlugin_OnExternalMediationRequest(const char *mediationProvider, int adType, const char *recommendedAdUnitId, double requestedFloorPrice, double calculatedFloorPrice, const char *adUnitId, double revenue, const char *precision, int status, const char *providerStatus, const char *networkStatus);
-    void NeftaAdapter_OnExternalMediationImpressionAsString(int adType, const char *network, const char *data, double revenue, const char *precision);
-    const char * NeftaPlugin_GetNuid(bool present);
-    void NeftaPlugin_SetContentRating(const char *rating);
-    void NeftaPlugin_GetInsights(int requestId, int insights, int timeoutInSeconds);
-    void NeftaPlugin_SetOverride(const char *root);
-#ifdef __cplusplus
-}
-#endif
-
-void NeftaPlugin_EnableLogging(bool enable) {
-    [NeftaPlugin EnableLogging: enable];
-}
-
-void NeftaPlugin_Init(const char *appId, OnInsights onInsights) {
-    _plugin = [NeftaPlugin InitWithAppId: [NSString stringWithUTF8String: appId]];
-    _plugin.OnInsightsAsString = ^void(NSInteger requestId, NSString * _Nullable insights) {
-        const char *cBI = insights ? [insights UTF8String] : NULL;
-        onInsights((int)requestId, cBI);
-    };
-}
-
-void NeftaPlugin_Record(int type, int category, int subCategory, const char *name, long value, const char *customPayload) {
-    NSString *n = name ? [NSString stringWithUTF8String: name] : nil;
-    NSString *cp = customPayload ? [NSString stringWithUTF8String: customPayload] : nil;
-    [_plugin RecordWithType: type category: category subCategory: subCategory name: n value: value customPayload: cp];
-}
-
-void NeftaPlugin_OnExternalMediationRequest(const char *mediationProvider, int adType, const char *recommendedAdUnitId, double requestedFloorPrice, double calculatedFloorPrice, const char *adUnitId, double revenue, const char *precision, int status, const char *providerStatus, const char *networkStatus) {
-    NSString *mP = mediationProvider ? [NSString stringWithUTF8String: mediationProvider] : nil;
-    NSString *r = recommendedAdUnitId ? [NSString stringWithUTF8String: recommendedAdUnitId] : nil;
-    NSString *a = adUnitId ? [NSString stringWithUTF8String: adUnitId] : nil;
-    NSString *p = precision ? [NSString stringWithUTF8String: precision] : nil;
-    NSString *pS = providerStatus ? [NSString stringWithUTF8String: providerStatus] : nil;
-    NSString *nS = networkStatus ? [NSString stringWithUTF8String: networkStatus] : nil;
-    [NeftaPlugin OnExternalMediationRequest: mP adType: adType recommendedAdUnitId: r requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: a revenue: revenue precision: p status: status providerStatus: pS networkStatus: nS];
-}
-
-void NeftaAdapter_OnExternalMediationImpressionAsString(int adType, const char *network, const char *data, double revenue, const char *precision) {
-    NSString *n = network ? [NSString stringWithUTF8String: network] : nil;
-    NSString *d = data ? [NSString stringWithUTF8String: data] : nil;
-    NSString *p = precision ? [NSString stringWithUTF8String: precision] : nil;
-    [NeftaAdapter OnExternalMediationImpressionAsString: adType network: n data: d revenue: revenue precision: p];
-}
-
-const char * NeftaPlugin_GetNuid(bool present) {
-    const char *string = [[_plugin GetNuidWithPresent: present] UTF8String];
-    char *returnString = (char *)malloc(strlen(string) + 1);
-    strcpy(returnString, string);
-    return returnString;
-}
-
-void NeftaPlugin_SetContentRating(const char *rating) {
-    [_plugin SetContentRatingWithRating: [NSString stringWithUTF8String: rating]];
-}
-
-void NeftaPlugin_GetInsights(int requestId, int insights, int timeoutInSeconds) {
-    [_plugin GetInsightsBridge: requestId insights: insights timeout: timeoutInSeconds];
-}
-
-void NeftaPlugin_SetOverride(const char *root) {
-    [NeftaPlugin SetOverrideWithUrl: [NSString stringWithUTF8String: root]];
-}

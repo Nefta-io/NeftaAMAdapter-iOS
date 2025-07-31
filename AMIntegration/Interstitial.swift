@@ -14,6 +14,7 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
     
     private var _interstitial: GADInterstitialAd!
     private var _usedInsight: AdInsight?
+    private var _isLoading = false
     
     private let _loadButton: UIButton
     private let _showButton: UIButton
@@ -39,20 +40,25 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
                 _interstitial!.paidEventHandler = onPaid
                 _interstitial!.fullScreenContentDelegate = self
                 
-                NeftaAdapter.onExternalMediationRequestLoad(withInterstitial: _interstitial, usedInsight: _usedInsight)
+                GADNeftaAdapter.onExternalMediationRequestLoad(withInterstitial: _interstitial, usedInsight: _usedInsight)
                 
                 DispatchQueue.main.async {
                     self.SetInfo("Loaded interstitial \(adUnitToLoad)")
+                    
+                    self.SetLoadingButton(isLoading: false)
+                    self._loadButton.isEnabled = false
                     self._showButton.isEnabled = true
                 }
             } catch {
-                NeftaAdapter.onExternalMediationRequestFail(.interstitial, adUnitId: adUnitToLoad, usedInsight: _usedInsight, error: error)
+                GADNeftaAdapter.onExternalMediationRequestFail(.interstitial, adUnitId: adUnitToLoad, usedInsight: _usedInsight, error: error)
                 
                 DispatchQueue.main.async {
                     self.SetInfo("Failed to load Interstitial \(adUnitToLoad) with error: \(error.localizedDescription)")
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        self.GetInsightsAndLoad()
+                        if self._isLoading {
+                            self.GetInsightsAndLoad()
+                        }
                     }
                 }
             }
@@ -60,7 +66,7 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
     }
     
     func onPaid(adValue: GADAdValue) {
-        NeftaAdapter.onExternalMediationImpression(withInterstitial: _interstitial, adValue: adValue)
+        GADNeftaAdapter.onExternalMediationImpression(withInterstitial: _interstitial, adValue: adValue)
         
         SetInfo("onPaid \(adValue)")
     }
@@ -80,14 +86,19 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
     }
     
     @objc func OnLoadClick() {
-        SetInfo("GetInsightsAndLoad...")
-        GetInsightsAndLoad()
-        _loadButton.isEnabled = false
+        if _isLoading {
+            SetLoadingButton(isLoading: false)
+        } else {
+            SetInfo("GetInsightsAndLoad...")
+            GetInsightsAndLoad()
+            SetLoadingButton(isLoading: true)
+        }
     }
     
     @objc func OnShowClick() {
         _interstitial.present(fromRootViewController: _viewController)
         
+        _loadButton.isEnabled = true
         _showButton.isEnabled = false
     }
 
@@ -106,5 +117,14 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
     func SetInfo(_ info: String) {
         print(info)
         _status.text = info
+    }
+    
+    private func SetLoadingButton(isLoading: Bool) {
+        _isLoading = isLoading
+        if isLoading {
+            _loadButton.setTitle("Cancel", for: .normal)
+        } else {
+            _loadButton.setTitle("Load Rewarded", for: .normal)
+        }
     }
 }

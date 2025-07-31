@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '11.0'
-workspace 'NeftaAMIntegration'
+workspace 'AMIntegration'
 
 target 'AMIntegration' do
   project 'AMIntegration.xcodeproj'
