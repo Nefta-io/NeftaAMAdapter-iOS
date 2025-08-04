@@ -124,7 +124,7 @@ class Interstitial : NSObject, GADFullScreenContentDelegate {
         if isLoading {
             _loadButton.setTitle("Cancel", for: .normal)
         } else {
-            _loadButton.setTitle("Load Rewarded", for: .normal)
+            _loadButton.setTitle("Load Interstitial", for: .normal)
         }
     }
 }

@@ -41,9 +41,9 @@ class ViewController: UIViewController {
         NeftaPlugin.EnableLogging(enable: true)
         _plugin = NeftaPlugin.Init(appId: "5731414989340672")
         
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "87b6abe09a8764496b8c5d1c1b4ac23d" ]
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         GADMobileAds.sharedInstance().requestConfiguration.maxAdContentRating = .teen
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "284dcf66160f8ea305826b4cc2abe58e" ]
         
         _title.text = "Nefta Adapter for AdMob"
         _banner = Banner(showButton: _showBanner, hideButton: _hideBanner, status: _bannerStatus, viewController: self, bannerPlaceholder: _bannerPlaceholder)
