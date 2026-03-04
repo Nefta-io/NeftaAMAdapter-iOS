@@ -17,7 +17,9 @@ typedef NS_ENUM(NSInteger, AdType) {
 };
 
 + (void) OnExternalMediationRequestWithInsight:(AdInsight * _Nonnull)insight request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId;
++ (void) OnExternalMediationRequestWithInsight:(AdInsight * _Nonnull)insight request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId customBidFloor:(double)customBidFloor;
 + (void) OnExternalMediationRequest:(AdType)adType request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId;
++ (void) OnExternalMediationRequest:(AdType)adType request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId customBidFloor:(double)customBidFloor;
 
 + (void) OnExternalMediationRequestLoadWithBanner:(GADBannerView * _Nonnull)banner request:(GADRequest * _Nonnull)request;
 + (void) OnExternalMediationRequestLoadWithInterstitial:(GADInterstitialAd * _Nonnull)interstitial request:(GADRequest * _Nonnull)request;

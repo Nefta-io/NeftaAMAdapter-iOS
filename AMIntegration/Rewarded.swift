@@ -8,198 +8,282 @@
 import Foundation
 import GoogleMobileAds
 
-class Rewarded : NSObject, @unchecked Sendable, GADFullScreenContentDelegate {
+class Rewarded : UIView {
     
-    private let DefaultAdUnitId = "ca-app-pub-1193175835908241/3090611193"
+    private let AdUnitA = "ca-app-pub-1193175835908241/3090611193"
+    private let AdUnitB = "ca-app-pub-1193175835908241/3556677953"
     
-    private var _dynamicRequest: GADRequest?
-    private var _dynamicInsight: AdInsight?
-    private var _dynamicRewarded: GADRewardedAd!
-    private var _defaultRequest: GADRequest?
-    private var _defaultRewarded: GADRewardedAd!
-    private var _presentingRewarded: GADRewardedAd?
+    public enum State {
+        case Idle
+        case LoadingWithInsights
+        case Loading
+        case Ready
+        case Shown
+    }
     
-    private let _loadSwitch: UISwitch
-    private let _showButton: UIButton
-    private let _status: UILabel
-    private let _viewController: UIViewController
-    
-    private func StartLoading() {
-        if _dynamicRequest == nil {
-            GetInsightsAndLoad()
+    public class Track : NSObject, @unchecked Sendable, GADFullScreenContentDelegate {
+        let _controller: Rewarded
+        
+        public let _adUnitId: String
+        public var _floorPrice: Double = 0
+        public var _request: GADRequest?
+        public var _rewarded: GADRewardedAd?
+        public var _state = State.Idle
+        public var _insight: AdInsight?
+        
+        init(adUnitId: String, controller: Rewarded) {
+            _adUnitId = adUnitId
+            _controller = controller
         }
-        if _defaultRequest == nil {
-            LoadDefault()
+        
+        func OnLoad(rewarded: GADRewardedAd) {
+            _rewarded = rewarded
+            GADNeftaAdapter.onExternalMediationRequestLoad(withRewarded: rewarded, request: _request!)
+            
+            _controller.Log("OnLoad \(_adUnitId)")
+            
+            rewarded.fullScreenContentDelegate = self
+            rewarded.paidEventHandler = onPaid
+            
+            _insight = nil
+            _request = nil
+            _state = .Ready
+            
+            _controller.OnTrackLoad(true)
+        }
+        
+        func OnLoadFail(error: Error) {
+            GADNeftaAdapter.onExternalMediationRequestFail(_request!, error: error)
+            
+            _controller.Log("OnLoadFail \(_adUnitId): \(error.localizedDescription)")
+            
+            _request = nil
+            _rewarded = nil
+            AfterLoadFail()
+        }
+        
+        func AfterLoadFail() {
+            RetryLoad()
+            
+            _controller.OnTrackLoad(false)
+        }
+        
+        func RetryLoad() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self._state = State.Idle
+                self._controller.RetryLoadTracks()
+            }
+        }
+        
+        func TryShow(viewController: UIViewController?) -> Bool {
+            _floorPrice = 0
+            
+            do {
+                try _rewarded!.canPresent(fromRootViewController: viewController!)
+                _controller.Log("Show \(_adUnitId)")
+                _state = .Shown
+                _rewarded!.present(fromRootViewController: viewController!) {
+                    let reward = self._rewarded!.adReward
+                    self._controller.Log("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+                }
+            } catch let error as NSError {
+                _controller.Log("Error showing \(String(describing: _adUnitId)): \(error.description)")
+                _state = .Idle
+                _controller.RetryLoadTracks()
+                return false
+            }
+            return true
+        }
+        
+        func onPaid(adValue: GADAdValue) {
+            GADNeftaAdapter.onExternalMediationImpression(withRewarded: _rewarded!, adValue: adValue)
+            
+            _controller.Log("onPaid \(adValue)")
+        }
+        
+        func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+            GADNeftaAdapter.onExternalMediationClick(withRewarded: ad as! GADRewardedAd)
+            
+            _controller.Log("onClick \(ad)")
+        }
+        
+        func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+            _controller.Log("didFailToPresentFullScreenContentWithError: \(error)")
+            
+            _state = .Idle
+            _rewarded = nil
+            _controller.RetryLoadTracks()
+        }
+
+        func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+            _controller.Log("adWillPresentFullScreenContent")
+        }
+
+        func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+            _controller.Log("adDidDismissFullScreenContent")
+            
+            _state = .Idle
+            _rewarded = nil
+            _controller.RetryLoadTracks()
         }
     }
     
-    private func GetInsightsAndLoad() {
-        if _dynamicRequest != nil || !_loadSwitch.isOn {
-            return
-        }
-        
-        _dynamicRequest = GADRequest()
-        
-        NeftaPlugin._instance.GetInsights(Insights.Rewarded, previousInsight: _dynamicInsight, callback: LoadWithInsights, timeout: 5)
+    private var _trackA: Track!
+    private var _trackB: Track!
+    private var _isFirstResponseReceived = false
+    
+    @IBOutlet weak var _loadSwitch: UISwitch!
+    @IBOutlet weak var _showButton: UIButton!
+    @IBOutlet weak var _status: UILabel!
+    private var _viewController: UIViewController!
+    
+    public static var Instance: Rewarded!
+    
+    private func LoadTracks() {
+        LoadTrack(track: _trackA, otherState: _trackB._state)
+        LoadTrack(track: _trackB, otherState: _trackA._state)
     }
     
-    private func LoadWithInsights(insights: Insights) {
-        _dynamicInsight = insights._rewarded
-        if let insight = _dynamicInsight, let recommendedAdUnit = insight._adUnit {
-            SetInfo("Loading Dynamic \(recommendedAdUnit)")
-            GADNeftaAdapter.onExternalMediationRequest(with: insight, request: _dynamicRequest!, adUnitId: recommendedAdUnit)
-            Task {
-                do {
-                    _dynamicRewarded = try await GADRewardedAd.load(withAdUnitID: recommendedAdUnit, request: GADRequest())
-                    _dynamicRewarded!.fullScreenContentDelegate = self
-                    _dynamicRewarded!.paidEventHandler = onPaid
-                    
-                    _dynamicInsight = nil
-                    
-                    GADNeftaAdapter.onExternalMediationRequestLoad(withRewarded: _dynamicRewarded, request: _dynamicRequest!)
-                    
-                    DispatchQueue.main.async {
-                        self.SetInfo("Loaded Dynamic \(recommendedAdUnit)")
-                        self.UpdateShowButton()
-                    }
-                } catch {
-                    GADNeftaAdapter.onExternalMediationRequestFail(_dynamicRequest!, error: error)
-                    
-                    _dynamicRequest = nil
-                    
-                    DispatchQueue.main.async {
-                        self.SetInfo("Failed to load Dynamic \(recommendedAdUnit) with error: \(error.localizedDescription)")
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            self.GetInsightsAndLoad()
+    private func LoadTrack(track: Track, otherState: State) {
+        if track._state == .Idle {
+            if otherState == .LoadingWithInsights || otherState == .Shown {
+                if (_isFirstResponseReceived) {
+                    LoadDefault(track: track)
+                }
+            } else {
+                GetInsightsAndLoad(track: track)
+            }
+        }
+    }
+    
+    private func GetInsightsAndLoad(track: Track) {
+        track._state = .LoadingWithInsights
+        
+        NeftaPlugin._instance!.GetInsights(Insights.Rewarded, previousInsight: track._insight, callback: { insights in
+            self.Log("Load with insights \(insights)")
+            if let insight = insights._rewarded {
+                track._insight = insight
+                track._floorPrice = insight._floorPrice
+          
+                // map floorPrice to your AdMob Pro mediation group configuration
+                // sample KVP mapping:
+                var mediationGroup = "low";
+                if track._floorPrice > 100
+                {
+                    mediationGroup = "high";
+                }
+                else if track._floorPrice > 50
+                {
+                    mediationGroup = "medium";
+                }
+                let extras = GADExtras()
+                extras.additionalParameters = [ "mediation group key": mediationGroup ]
+                
+                track._request = GADRequest()
+                track._request!.register(extras)
+                
+                GADNeftaAdapter.onExternalMediationRequest(with: insight, request: track._request!, adUnitId: track._adUnitId)
+                
+                self.Log("Loading \(track._adUnitId) as Optimized with \(mediationGroup)")
+                Task {
+                    do {
+                        let rewarded = try await GADRewardedAd.load(withAdUnitID: track._adUnitId, request: track._request)
+                        DispatchQueue.main.async {
+                            track.OnLoad(rewarded: rewarded)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            track.OnLoadFail(error: error)
                         }
                     }
                 }
+            } else {
+                track.AfterLoadFail()
             }
-        } else {
-            _dynamicRequest = nil
-        }
+        }, timeout: 5)
     }
     
-    private func LoadDefault() {
-        if _defaultRequest != nil || !_loadSwitch.isOn {
-            return
-        }
+    private func LoadDefault(track: Track) {
+        track._state = State.Loading
         
-        SetInfo("Loading Default \(DefaultAdUnitId)")
+        track._floorPrice = 0
+        track._request = GADRequest()
         
-        _defaultRequest = GADRequest()
-        GADNeftaAdapter.onExternalMediationRequest(.rewarded, request: _defaultRequest!, adUnitId: DefaultAdUnitId)
+        GADNeftaAdapter.onExternalMediationRequest(.rewarded, request: track._request!, adUnitId: track._adUnitId)
+        
         Task {
             do {
-                self._defaultRewarded = try await GADRewardedAd.load(withAdUnitID: DefaultAdUnitId, request: _defaultRequest)
-                _defaultRewarded!.fullScreenContentDelegate = self
-                _defaultRewarded!.paidEventHandler = onPaid
-                
-                GADNeftaAdapter.onExternalMediationRequestLoad(withRewarded: _defaultRewarded, request: _defaultRequest!)
-                
+                let rewarded = try await GADRewardedAd.load(withAdUnitID: track._adUnitId, request: track._request)
                 DispatchQueue.main.async {
-                    self.SetInfo("Loaded Default \(self.DefaultAdUnitId)")
-                    self.UpdateShowButton()
+                    track.OnLoad(rewarded: rewarded)
                 }
             } catch {
-                GADNeftaAdapter.onExternalMediationRequestFail(_defaultRequest!, error: error)
-                
-                _defaultRequest = nil
-                
                 DispatchQueue.main.async {
-                    self.SetInfo("Failed to load Default \(self.DefaultAdUnitId) with error: \(error.localizedDescription)")
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        self.LoadDefault()
-                    }
+                    track.OnLoadFail(error: error)
                 }
             }
         }
     }
-    
-    func onPaid(adValue: GADAdValue) {
-        GADNeftaAdapter.onExternalMediationImpression(withRewarded: _presentingRewarded!, adValue: adValue)
-        
-        SetInfo("onPaid \(adValue)")
-    }
-    
-    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
-        GADNeftaAdapter.onExternalMediationClick(withRewarded: ad as! GADRewardedAd)
-        
-        SetInfo("onClick \(ad)")
-    }
 
-    init(loadSwitch: UISwitch, showButton: UIButton, status: UILabel, viewController: UIViewController) {
-        _loadSwitch = loadSwitch
-        _showButton = showButton
-        _status = status
-        _viewController = viewController
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+    
+        _viewController = findViewController()
         
-        super.init()
+        _trackA = Track(adUnitId: AdUnitA, controller: self)
+        _trackB = Track(adUnitId: AdUnitB, controller: self)
         
         _loadSwitch.addTarget(self, action: #selector(OnLoadSwitch), for: .valueChanged)
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
         
         _showButton.isEnabled = false
+        
+        Rewarded.Instance = self
     }
     
     @objc private func OnLoadSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            StartLoading()
-        } else {
-            _dynamicInsight = nil
+            LoadTracks()
         }
     }
     
     @objc func OnShowClick() {
-        if _dynamicRewarded != nil {
-            SetInfo("Showing Dynamic")
-            _dynamicRewarded.present(fromRootViewController: _viewController) {
-                let reward = self._presentingRewarded!.adReward
-                self.SetInfo("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+        var isShown = false
+        if _trackA._state == .Ready {
+            if _trackB._state == .Ready && _trackB._floorPrice > _trackA._floorPrice {
+                isShown = _trackB.TryShow(viewController: _viewController)
             }
-            _presentingRewarded = _dynamicRewarded
-            _dynamicRewarded = nil
-            _dynamicRequest = nil
-        } else if _defaultRewarded != nil {
-            SetInfo("Showing Default")
-            _defaultRewarded.present(fromRootViewController: _viewController) {
-                let reward = self._presentingRewarded!.adReward
-                self.SetInfo("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+            if !isShown {
+                isShown = _trackA.TryShow(viewController: _viewController)
             }
-            _presentingRewarded = _defaultRewarded
-            _defaultRewarded = nil
-            _defaultRequest = nil
+        }
+        if !isShown && _trackB._state == .Ready {
+            isShown = _trackB.TryShow(viewController: _viewController)
         }
         UpdateShowButton()
     }
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        SetInfo("didFailToPresentFullScreenContentWithError: \(error)")
-    }
-
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        SetInfo("adWillPresentFullScreenContent")
-    }
-
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        SetInfo("adDidDismissFullScreenContent")
-        
-        _presentingRewarded = nil
-        
-        // start new load cycle
-        if (_loadSwitch.isOn) {
-            StartLoading();
+    private func RetryLoadTracks() {
+        if _loadSwitch.isOn {
+            LoadTracks()
         }
     }
     
-    func UpdateShowButton() {
-        _showButton.isEnabled = _dynamicRewarded != nil || _defaultRewarded != nil
+    func OnTrackLoad(_ success: Bool) {
+        if success {
+            UpdateShowButton()
+        }
+        
+        _isFirstResponseReceived = true
+        RetryLoadTracks()
     }
     
-    private func SetInfo(_ info: String) {
-        print("NeftaPluginAM Rewarded \(info)")
-        _status.text = info
+    func UpdateShowButton() {
+        _showButton.isEnabled = _trackA._state == .Ready || _trackB._state == .Ready
+    }
+    
+    func Log(_ log: String) {
+        _status.text = log
+        ViewController._log.info("NeftaPluginAM Rewarded \(log, privacy: .public)")
     }
 }
