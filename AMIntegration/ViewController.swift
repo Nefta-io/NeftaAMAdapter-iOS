@@ -15,18 +15,20 @@ class ViewController: UIViewController {
     public static var _log = Logger(subsystem: "com.nefta.am", category: "general")
     
     private var _plugin: NeftaPlugin!
-
+    
+    @IBOutlet weak var _titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        _titleLabel.text = "AdMob \(GADMobileAds.sharedInstance().versionNumber.majorVersion)"
+        
         DebugServer.Init(viewController: self)
         
         NeftaPlugin.EnableLogging(enable: true)
-        _plugin = NeftaPlugin.Init(appId: "5731414989340672")
-        _plugin.OnReady = { initConfig in
+        GADNeftaAdapter.Init(appId: "5731414989340672", onReady: { initConfig in
             print("[NeftaPluginAM] Should bypass Nefta optimization? \(initConfig._skipOptimization)")
-        }
+        })
         
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
             "87b6abe09a8764496b8c5d1c1b4ac23d",

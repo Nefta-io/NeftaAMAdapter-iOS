@@ -75,7 +75,7 @@ class RewardedSim : UIView {
         }
         
         func RetryLoad() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + GADNeftaAdapter.GetRetryDelayInSeconds(insight: _insight)) {
                 self._state = .Idle
                 self._controller.RetryLoadTracks()
             }
@@ -155,7 +155,6 @@ class RewardedSim : UIView {
     @IBOutlet weak var _bStatus: UILabel!
     
     private var _viewController: UIViewController!
-    @IBOutlet weak var _simulatorAd: SimulatorAd!
     
     public static var Instance: RewardedSim!
     
@@ -220,7 +219,7 @@ class RewardedSim : UIView {
             } else {
                 track.AfterLoadFail()
             }
-        }, timeout: 5)
+        })
     }
     
     private func LoadDefault(track: Track) {
@@ -472,10 +471,6 @@ class RewardedSim : UIView {
         _bStatus.text = status
     }
     
-    public func Show(title: String, onShow: @escaping (() -> Void), onClick: @escaping (() -> Void), onReward: (() -> Void)!, onClose: @escaping (() -> Void)) {
-        _simulatorAd.Show(title: title, onShow: onShow, onClick: onClick, onReward: onReward, onClose: onClose)
-    }
-    
     public class SGADRewardedAd : GADRewardedAd {
         
         private var _request: GADRequest?
@@ -529,11 +524,13 @@ class RewardedSim : UIView {
         override func present(fromRootViewController: UIViewController?, userDidEarnRewardHandler: @escaping () -> Void) {
             _paidEventHandler!(SGADAdValue(value: 0.001, currencyCode: "USD"))
             
-            RewardedSim.Instance.Show(title: "Rewarded",
-                                          onShow: { self.fullScreenContentDelegate!.adWillPresentFullScreenContent!(self) },
-                                          onClick: { self.fullScreenContentDelegate!.adDidRecordClick!(self) },
-                                          onReward: { userDidEarnRewardHandler() },
-                                          onClose: { self.fullScreenContentDelegate!.adDidDismissFullScreenContent!(self) }
+            NDebug.Open(
+                title: "Rewarded",
+                viewController: fromRootViewController!,
+                onShow: { self.fullScreenContentDelegate!.adWillPresentFullScreenContent!(self) },
+                onClick: { self.fullScreenContentDelegate!.adDidRecordClick!(self) },
+                onClose: { self.fullScreenContentDelegate!.adDidDismissFullScreenContent!(self) },
+                onReward: { userDidEarnRewardHandler() }
             )
             
             if RewardedSim.Instance._trackA._request == _request {
@@ -571,5 +568,14 @@ class RewardedSim : UIView {
             _value = value
             _currencyCode = currencyCode
         }
+    }
+    
+    private func GetUIViewController() -> UIViewController {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+
+        return (keyWindow!.rootViewController?.presentedViewController ?? keyWindow!.rootViewController)!
     }
 }

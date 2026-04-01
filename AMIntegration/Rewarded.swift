@@ -69,7 +69,7 @@ class Rewarded : UIView {
         }
         
         func RetryLoad() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + GADNeftaAdapter.GetRetryDelayInSeconds(insight: _insight)) {
                 self._state = State.Idle
                 self._controller.RetryLoadTracks()
             }
@@ -164,7 +164,7 @@ class Rewarded : UIView {
             if let insight = insights._rewarded {
                 track._insight = insight
                 track._floorPrice = insight._floorPrice
-          
+
                 // map floorPrice to your AdMob Pro mediation group configuration
                 // sample KVP mapping:
                 var mediationGroup = "low";
@@ -200,7 +200,7 @@ class Rewarded : UIView {
             } else {
                 track.AfterLoadFail()
             }
-        }, timeout: 5)
+        })
     }
     
     private func LoadDefault(track: Track) {

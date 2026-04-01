@@ -75,7 +75,7 @@ class InterstitialSim : UIView {
         }
         
         func RetryLoad() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + GADNeftaAdapter.GetRetryDelayInSeconds(insight: _insight)) {
                 self._state = .Idle
                 self._controller.RetryLoadTracks()
             }
@@ -152,7 +152,6 @@ class InterstitialSim : UIView {
     @IBOutlet weak var _bStatus: UILabel!
     
     private var _viewController: UIViewController!
-    @IBOutlet weak var _simulatorAd: SimulatorAd!
     
     private static var Instance: InterstitialSim!
     
@@ -178,7 +177,7 @@ class InterstitialSim : UIView {
         
         NeftaPlugin._instance!.GetInsights(Insights.Interstitial, previousInsight: track._insight, callback: { insights in
             self.Log("Load with insights: \(insights)")
-            if let insight = insights._interstitial {
+            if let insight = insights._interstitial, let recommendedAdUnitId = insight._adUnit {
                 track._insight = insight
                 track._floorPrice = insight._floorPrice
 
@@ -217,7 +216,7 @@ class InterstitialSim : UIView {
             } else {
                 track.AfterLoadFail()
             }
-        }, timeout: 5)
+        })
     }
     
     private func LoadDefault(track: Track) {
@@ -470,10 +469,6 @@ class InterstitialSim : UIView {
         _bStatus.text = status
     }
     
-    public func Show(title: String, onShow: @escaping (() -> Void), onClick: @escaping (() -> Void), onReward: (() -> Void)!, onClose: @escaping (() -> Void)) {
-        _simulatorAd.Show(title: title, onShow: onShow, onClick: onClick, onReward: onReward, onClose: onClose)
-    }
-    
     public class SGADInterstitialAd : GADInterstitialAd {
         
         private var _request: GADRequest?
@@ -530,11 +525,13 @@ class InterstitialSim : UIView {
         override func present(fromRootViewController: UIViewController?) {
             _paidEventHandler!(SGADAdValue(value: 0.001, currencyCode: "USD"))
             
-            InterstitialSim.Instance.Show(title: "Interstitial",
-                                          onShow: { self.fullScreenContentDelegate!.adWillPresentFullScreenContent!(self) },
-                                          onClick: { self.fullScreenContentDelegate!.adDidRecordClick!(self) },
-                                          onReward: nil,
-                                          onClose: { self.fullScreenContentDelegate!.adDidDismissFullScreenContent!(self) }
+            NDebug.Open(
+                title: "Interstitial",
+                viewController: fromRootViewController!,
+                onShow: { self.fullScreenContentDelegate!.adWillPresentFullScreenContent!(self) },
+                onClick: { self.fullScreenContentDelegate!.adDidRecordClick!(self) },
+                onClose: { self.fullScreenContentDelegate!.adDidDismissFullScreenContent!(self) },
+                onReward: nil
             )
             
             if InterstitialSim.Instance._trackA._request == _request {
@@ -573,5 +570,14 @@ class InterstitialSim : UIView {
             _value = value
             _currencyCode = currencyCode
         }
+    }
+    
+    private func GetUIViewController() -> UIViewController {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+
+        return (keyWindow!.rootViewController?.presentedViewController ?? keyWindow!.rootViewController)!
     }
 }

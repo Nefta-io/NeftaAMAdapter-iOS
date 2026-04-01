@@ -1,14 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
-
-#import "GADNeftaExtras.h"
 #import <NeftaSDK/NeftaSDK-Swift.h>
 
-@interface GADNeftaAdapter : NSObject <GADMediationAdapter>
-typedef NS_ENUM(NSInteger, NeftaAdapterErrorCode) {
-    NeftaAdapterErrorCodeInvalidServerParameters = 101,
-    NeftaAdapterErrorCodeAdNotReady = 102,
-};
+@interface GADNeftaAdapter : NSObject
 typedef NS_ENUM(NSInteger, AdType) {
     AdTypeOther = 0,
     AdTypeBanner = 1,
@@ -16,6 +10,9 @@ typedef NS_ENUM(NSInteger, AdType) {
     AdTypeRewarded = 3
 };
 
++ (void)InitWithAppId:(NSString *_Nonnull)appId onReady:(void (^ _Nullable)(InitConfiguration * _Nonnull))onReady NS_SWIFT_NAME(Init(appId:onReady:));
++ (void)InitWithClientId:(NSString *_Nonnull)clientId onReady:(void (^ _Nullable)(InitConfiguration * _Nonnull))onReady NS_SWIFT_NAME(Init(clientId:onReady:));
++ (double) GetRetryDelayInSeconds:(AdInsight * _Nullable)insight NS_SWIFT_NAME(GetRetryDelayInSeconds(insight:));
 + (void) OnExternalMediationRequestWithInsight:(AdInsight * _Nonnull)insight request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId;
 + (void) OnExternalMediationRequestWithInsight:(AdInsight * _Nonnull)insight request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId customBidFloor:(double)customBidFloor;
 + (void) OnExternalMediationRequest:(AdType)adType request:(GADRequest * _Nonnull)request adUnitId:(NSString * _Nonnull)adUnitId;
@@ -34,5 +31,5 @@ typedef NS_ENUM(NSInteger, AdType) {
 + (void)OnExternalMediationClickWithInterstitial:(GADInterstitialAd * _Nonnull)interstitial;
 + (void)OnExternalMediationClickWithRewarded:(GADRewardedAd * _Nonnull)rewarded;
 
-+ (NSError *_Nonnull) NLoadToAdapterError:(NError *_Nonnull)error;
++ (NSString * _Nullable) TryParseResponseInfo:(GADResponseInfo * _Nullable)responseInfo data:(NSMutableDictionary * _Nonnull)data;
 @end
