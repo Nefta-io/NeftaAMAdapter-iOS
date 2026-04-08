@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         
         NeftaPlugin.EnableLogging(enable: true)
         GADNeftaAdapter.Init(appId: "5731414989340672", onReady: { initConfig in
-            print("[NeftaPluginAM] Should bypass Nefta optimization? \(initConfig._skipOptimization)")
+            print("[NeftaPluginAM] Should skip Nefta optimization: \(initConfig._skipOptimization) for: \(initConfig._nuid)")
         })
         
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
