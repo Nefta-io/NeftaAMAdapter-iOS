@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     public static var _log = Logger(subsystem: "com.nefta.am", category: "general")
     
+    private var _isSimulator = false
     private var _plugin: NeftaPlugin!
     
     @IBOutlet weak var _titleLabel: UILabel!
@@ -21,9 +22,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _titleLabel.text = "AdMob \(GADMobileAds.sharedInstance().versionNumber.majorVersion)"
-        
-        DebugServer.Init(viewController: self)
+        InitializeUI()
+        //DebugServer.Init(viewController: self)
         
         NeftaPlugin.EnableLogging(enable: true)
         GADNeftaAdapter.Init(appId: "5731414989340672", onReady: { initConfig in
@@ -37,6 +37,33 @@ class ViewController: UIViewController {
         ]
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         GADMobileAds.sharedInstance().requestConfiguration.maxAdContentRating = .teen
+    }
+    
+    private func InitializeUI() {
+        _titleLabel.text = "AdMob \(GADMobileAds.sharedInstance().versionNumber.majorVersion)"
+        let onClickHandler = UITapGestureRecognizer(target: self, action: #selector(onTitleClick))
+        _titleLabel!.isUserInteractionEnabled = true
+        _titleLabel!.addGestureRecognizer(onClickHandler)
+        
+        var isSimulator: Bool = false
+        if let path = Bundle.main.path(forResource: "config", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) {
+            isSimulator = dict["IS_SIMULATOR"] as? Bool ?? false
+        }
+        ToggleUI(isSimulator: isSimulator)
+    }
+    
+    @objc func onTitleClick() {
+        ToggleUI(isSimulator: !_isSimulator)
+    }
+    
+    private func ToggleUI(isSimulator: Bool) {
+        _isSimulator = isSimulator
+        
+        (view.viewWithTag(11) as! InterstitialSim).isHidden = !isSimulator
+        (view.viewWithTag(12) as! RewardedSim).isHidden = !isSimulator
+        
+        (view.viewWithTag(13) as! Interstitial).isHidden = isSimulator
+        (view.viewWithTag(14) as! Rewarded).isHidden = isSimulator
     }
 }
 
