@@ -12,12 +12,19 @@ import OSLog
 
 class ViewController: UIViewController {
     
-    public static var _log = Logger(subsystem: "com.nefta.am", category: "general")
+    public var _log = Logger(subsystem: "com.nefta.am", category: "general")
     
-    private var _isSimulator = false
-    private var _plugin: NeftaPlugin!
+    @IBOutlet weak var _title: UILabel!
     
-    @IBOutlet weak var _titleLabel: UILabel!
+    @IBOutlet weak var _groupView: UIView!
+    @IBOutlet weak var _controlButton: UIButton!
+    @IBOutlet weak var _optimizedButton: UIButton!
+    @IBOutlet weak var _simulatorButton: UIButton!
+    
+    @IBOutlet weak var _interstitialUi: InterstitialUi!
+    @IBOutlet weak var _rewardedUi: RewardedUi!
+    @IBOutlet weak var _interstitialSim: InterstitialSim!
+    @IBOutlet weak var _rewardedSim: RewardedSim!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,41 +47,31 @@ class ViewController: UIViewController {
     }
     
     private func InitializeUI() {
-        _titleLabel.text = "AdMob \(GADMobileAds.sharedInstance().versionNumber.majorVersion)"
-        let onClickHandler = UITapGestureRecognizer(target: self, action: #selector(onTitleClick))
-        _titleLabel!.isUserInteractionEnabled = true
-        _titleLabel!.addGestureRecognizer(onClickHandler)
+        _title!.text = "AdMob \(GADMobileAds.sharedInstance().versionNumber.majorVersion)"
         
-        var isSimulator: Bool = false
-        if let path = Bundle.main.path(forResource: "config", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) {
-            isSimulator = dict["IS_SIMULATOR"] as? Bool ?? false
-        }
-        ToggleUI(isSimulator: isSimulator)
+        _controlButton.addTarget(self, action: #selector(OnControlClick), for: .touchUpInside)
+        _optimizedButton.addTarget(self, action: #selector(OnOptimizedClick), for: .touchUpInside)
+        _simulatorButton.addTarget(self, action: #selector(OnSimulatorClick), for: .touchUpInside)
     }
     
-    @objc func onTitleClick() {
-        ToggleUI(isSimulator: !_isSimulator)
+    @objc func OnControlClick() {
+        _groupView.isHidden = true
+        
+        _interstitialUi.Init(logic: InterstitialDefault(), viewController: self)
+        _rewardedUi.Init(logic: RewardedDefault(), viewController: self)
     }
     
-    private func ToggleUI(isSimulator: Bool) {
-        _isSimulator = isSimulator
+    @objc func OnOptimizedClick() {
+        _groupView.isHidden = true
         
-        (view.viewWithTag(11) as! InterstitialSim).isHidden = !isSimulator
-        (view.viewWithTag(12) as! RewardedSim).isHidden = !isSimulator
-        
-        (view.viewWithTag(13) as! Interstitial).isHidden = isSimulator
-        (view.viewWithTag(14) as! Rewarded).isHidden = isSimulator
+        _interstitialUi.Init(logic: InterstitialOptimized(), viewController: self)
+        _rewardedUi.Init(logic: RewardedOptimized(), viewController: self)
     }
-}
-
-extension UIView {
-    func findViewController() -> UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
+    
+    @objc func OnSimulatorClick() {
+        _groupView.isHidden = true
+        
+        _interstitialSim.Init(viewController: self)
+        _rewardedSim.Init(viewController: self)
     }
 }

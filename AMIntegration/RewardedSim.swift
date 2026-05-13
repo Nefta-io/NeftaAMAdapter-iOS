@@ -154,7 +154,7 @@ class RewardedSim : UIView {
     @IBOutlet weak var _bOther: UIButton!
     @IBOutlet weak var _bStatus: UILabel!
     
-    private var _viewController: UIViewController!
+    private var _viewController: ViewController!
     
     public static var Instance: RewardedSim!
     
@@ -244,10 +244,9 @@ class RewardedSim : UIView {
         }
     }
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
+    func Init(viewController: ViewController) {
+        _viewController = viewController
         RewardedSim.Instance = self
-        _viewController = findViewController()
         
         _trackA = Track(adUnitId: AdUnitA, controller: self)
         _trackB = Track(adUnitId: AdUnitB, controller: self)
@@ -329,7 +328,7 @@ class RewardedSim : UIView {
     
     func Log(_ log: String) {
         _status.text = log
-        ViewController._log.info("NeftaPluginAM RewardedSim \(log, privacy: .public)")
+        _viewController._log.info("NeftaPluginAM RewardedSim \(log, privacy: .public)")
     }
     
     func SimOnAdLoadedEvent(request: Track, isHigh: Bool) {

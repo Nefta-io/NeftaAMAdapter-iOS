@@ -15,6 +15,12 @@
 		90A4B5622C2E8FEE00E13A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A4B5612C2E8FEE00E13A98 /* Assets.xcassets */; };
 		90A4B5882C2E922A00E13A98 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5872C2E922A00E13A98 /* Interstitial.swift */; };
 		90A4B58A2C2E923A00E13A98 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4B5892C2E923A00E13A98 /* Rewarded.swift */; };
+		90E321BA2FB4447300B30E2B /* InterstitialDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E321B42FB4447300B30E2B /* InterstitialDefault.swift */; };
+		90E321BB2FB4447300B30E2B /* InterstitialUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E321B62FB4447300B30E2B /* InterstitialUi.swift */; };
+		90E321BC2FB4447300B30E2B /* RewardedDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E321B72FB4447300B30E2B /* RewardedDefault.swift */; };
+		90E321BD2FB4447300B30E2B /* RewardedOptimized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E321B82FB4447300B30E2B /* RewardedOptimized.swift */; };
+		90E321BE2FB4447300B30E2B /* RewardedUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E321B92FB4447300B30E2B /* RewardedUi.swift */; };
+		90E321BF2FB4447300B30E2B /* InterstitialOptimized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E321B52FB4447300B30E2B /* InterstitialOptimized.swift */; };
 		90E561FF2F7579B000CC088F /* RewardedSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E561FE2F7579B000CC088F /* RewardedSim.swift */; };
 		90E562002F7579B000CC088F /* NDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E561FD2F7579B000CC088F /* NDebug.swift */; };
 		90E562012F7579B000CC088F /* InterstitialSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E561FC2F7579B000CC088F /* InterstitialSim.swift */; };
@@ -36,6 +42,12 @@
 		90A4B5892C2E923A00E13A98 /* Rewarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
 		90A4B58F2C2E9E2200E13A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90A4B5AE2C2EA20100E13A98 /* AMAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AMAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90E321B42FB4447300B30E2B /* InterstitialDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialDefault.swift; sourceTree = "<group>"; };
+		90E321B52FB4447300B30E2B /* InterstitialOptimized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialOptimized.swift; sourceTree = "<group>"; };
+		90E321B62FB4447300B30E2B /* InterstitialUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialUi.swift; sourceTree = "<group>"; };
+		90E321B72FB4447300B30E2B /* RewardedDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedDefault.swift; sourceTree = "<group>"; };
+		90E321B82FB4447300B30E2B /* RewardedOptimized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedOptimized.swift; sourceTree = "<group>"; };
+		90E321B92FB4447300B30E2B /* RewardedUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedUi.swift; sourceTree = "<group>"; };
 		90E561FC2F7579B000CC088F /* InterstitialSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialSim.swift; sourceTree = "<group>"; };
 		90E561FD2F7579B000CC088F /* NDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDebug.swift; sourceTree = "<group>"; };
 		90E561FE2F7579B000CC088F /* RewardedSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedSim.swift; sourceTree = "<group>"; };
@@ -85,6 +97,12 @@
 		90A4B5572C2E8FED00E13A98 /* AMIntegration */ = {
 			isa = PBXGroup;
 			children = (
+				90E321B42FB4447300B30E2B /* InterstitialDefault.swift */,
+				90E321B52FB4447300B30E2B /* InterstitialOptimized.swift */,
+				90E321B62FB4447300B30E2B /* InterstitialUi.swift */,
+				90E321B72FB4447300B30E2B /* RewardedDefault.swift */,
+				90E321B82FB4447300B30E2B /* RewardedOptimized.swift */,
+				90E321B92FB4447300B30E2B /* RewardedUi.swift */,
 				90E561FC2F7579B000CC088F /* InterstitialSim.swift */,
 				90E561FD2F7579B000CC088F /* NDebug.swift */,
 				90E561FE2F7579B000CC088F /* RewardedSim.swift */,
@@ -259,6 +277,12 @@
 				90E562002F7579B000CC088F /* NDebug.swift in Sources */,
 				90E562012F7579B000CC088F /* InterstitialSim.swift in Sources */,
 				90A4B55B2C2E8FED00E13A98 /* SceneDelegate.swift in Sources */,
+				90E321BA2FB4447300B30E2B /* InterstitialDefault.swift in Sources */,
+				90E321BB2FB4447300B30E2B /* InterstitialUi.swift in Sources */,
+				90E321BC2FB4447300B30E2B /* RewardedDefault.swift in Sources */,
+				90E321BD2FB4447300B30E2B /* RewardedOptimized.swift in Sources */,
+				90E321BE2FB4447300B30E2B /* RewardedUi.swift in Sources */,
+				90E321BF2FB4447300B30E2B /* InterstitialOptimized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

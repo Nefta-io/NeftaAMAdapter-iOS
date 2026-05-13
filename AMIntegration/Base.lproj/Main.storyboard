@@ -12,304 +12,47 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AMIntegration" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DT-XR-XY2">
-                                <rect key="frame" x="36.666666666666657" y="117.99999999999999" width="320" height="38.333333333333329"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="990" constant="320" id="0QF-NJ-XjX"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nefta AdMob" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DT-XR-XY2" userLabel="Title">
+                                <rect key="frame" x="104.66666666666669" y="117.99999999999999" width="184" height="38.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="top" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sgf-TX-Yq0" userLabel="Container">
-                                <rect key="frame" x="36.666666666666657" y="218" width="320" height="400"/>
+                                <rect key="frame" x="36.666666666666657" y="218" width="320" height="416"/>
                                 <subviews>
-                                    <view hidden="YES" tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpZ-dd-ufG" customClass="InterstitialSim" customModule="AMIntegration" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-360" width="320" height="360"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dE4-6X-Eux" userLabel="GroupView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9xA-kk-HMw" userLabel="Stack">
-                                                <rect key="frame" x="-22.666666666666657" y="-56" width="320" height="86110458.333333328"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rqc-es-cbU" userLabel="Controls">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="38403.333333333336"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interstitial" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wl-Sv-XNS" userLabel="Interstitial">
-                                                                <rect key="frame" x="0.0" y="19192" width="71.666666666666671" height="19.333333333332121"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="a82-u1-Z1H">
-                                                                <rect key="frame" x="103.33333333333334" y="19186" width="51" height="31"/>
-                                                            </switch>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3J-m2-h6Z" userLabel="Load">
-                                                                <rect key="frame" x="184.33333333333334" y="19191.333333333332" width="37.666666666666657" height="20.333333333332121"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-qe-5h3" userLabel="Show">
-                                                                <rect key="frame" x="254" y="19184.333333333332" width="66" height="34.333333333332121"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Show"/>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="A" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUF-oE-ENG" userLabel="Status A">
-                                                        <rect key="frame" x="0.0" y="38408.333333333336" width="320" height="21625"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="990" constant="320" id="edV-l0-3Ue"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" id="wiO-cA-sak" userLabel="SimA">
-                                                        <rect key="frame" x="0.0" y="60038.333333333328" width="320" height="38403.333333333328"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upc-1H-noW" userLabel="Fill 2 A">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="38403.333333333336"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0B-AW-1fb" userLabel="Fill 1 A">
-                                                                <rect key="frame" x="80" y="0.0" width="80" height="38403.333333333336"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="58C-Ay-EoY" userLabel="Other">
-                                                                <rect key="frame" x="160" y="0.0" width="80" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sab-j5-K8E" userLabel="No Fill">
-                                                                <rect key="frame" x="240" y="0.0" width="80" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
-                                                            </button>
-                                                        </subviews>
-                                                        <viewLayoutGuide key="safeArea" id="f9s-pT-7MV"/>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="B" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-WJ-5Rh" userLabel="Status B">
-                                                        <rect key="frame" x="0.0" y="98446.666666664183" width="320" height="85973518.333333343"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="990" constant="320" id="Gt5-e5-CXU"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Vzc-Cq-5K0" userLabel="SimB">
-                                                        <rect key="frame" x="0.0" y="86071970" width="320" height="38403.333333328366"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fjo-ac-p0a" userLabel="Fill 2 B">
-                                                                <rect key="frame" x="0.0" y="0.0" width="74.333333333333329" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Ed4-n3-xrd" userLabel="Fill 1 B">
-                                                                <rect key="frame" x="74.333333333333343" y="0.0" width="71.333333333333343" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pLH-9a-EBa" userLabel="No Fill">
-                                                                <rect key="frame" x="145.66666666666666" y="0.0" width="89.666666666666657" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1gN-cU-a45" userLabel="Other">
-                                                                <rect key="frame" x="235.33333333333334" y="0.0" width="84.666666666666657" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interstitial Status" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pE-al-hTe" userLabel="InterstitialStatus">
-                                                        <rect key="frame" x="0.0" y="86110378.333333328" width="320" height="80"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="990" constant="320" id="JN4-kj-cJx"/>
-                                                            <constraint firstAttribute="height" constant="80" id="XHp-S7-O6v" userLabel="height = 60"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1M-Tv-bOA" userLabel="Control">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="34.333333333333329"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Control"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JX7-PD-NDm" userLabel="Optimized">
+                                                <rect key="frame" x="0.0" y="60" width="320" height="34.333333333333329"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Optimized"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzG-qh-fhP" userLabel="Simulator">
+                                                <rect key="frame" x="0.0" y="120" width="320" height="34.333333333333329"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Simulator"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="320" id="pFb-OU-xIy"/>
-                                            <constraint firstAttribute="height" constant="360" id="pmb-lr-OjA" userLabel="height = 300"/>
+                                            <constraint firstAttribute="width" constant="320" id="ahm-iF-Peb"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="_aFill1" destination="B0B-AW-1fb" id="u5E-PN-fVw"/>
-                                            <outlet property="_aFill2" destination="Upc-1H-noW" id="y0m-JD-MbK"/>
-                                            <outlet property="_aNoFill" destination="sab-j5-K8E" id="r7Q-1d-xpn"/>
-                                            <outlet property="_aOther" destination="58C-Ay-EoY" id="cGw-kx-Ouf"/>
-                                            <outlet property="_aStatus" destination="RUF-oE-ENG" id="kqU-KZ-ne6"/>
-                                            <outlet property="_bFill1" destination="Ed4-n3-xrd" id="njZ-1x-pd8"/>
-                                            <outlet property="_bFill2" destination="fjo-ac-p0a" id="6ZW-Sp-XF4"/>
-                                            <outlet property="_bNoFill" destination="pLH-9a-EBa" id="IVk-WQ-3XM"/>
-                                            <outlet property="_bOther" destination="1gN-cU-a45" id="nfv-gU-Xf6"/>
-                                            <outlet property="_bStatus" destination="hrV-WJ-5Rh" id="kPG-Ai-XwH"/>
-                                            <outlet property="_loadSwitch" destination="a82-u1-Z1H" id="yaj-oz-Nk5"/>
-                                            <outlet property="_showButton" destination="bgy-qe-5h3" id="thg-YX-qYd"/>
-                                            <outlet property="_status" destination="3pE-al-hTe" id="Ha7-0Y-9WC"/>
-                                        </connections>
                                     </view>
-                                    <view hidden="YES" tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eL5-E3-NEO" customClass="RewardedSim" customModule="AMIntegration" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-360" width="320" height="360"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-c4-Vlb" userLabel="Stack">
-                                                <rect key="frame" x="-22.666666666666657" y="-56" width="284" height="86110458.333333328"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rIr-CV-ntG" userLabel="Controls">
-                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="38403.333333333336"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewarded" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sv-zD-m9O" userLabel="Rewarded">
-                                                                <rect key="frame" x="0.0" y="19192" width="72.666666666666671" height="19.333333333332121"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-oF-KPf">
-                                                                <rect key="frame" x="92" y="19186" width="51" height="31"/>
-                                                            </switch>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdz-OC-ArT" userLabel="Load">
-                                                                <rect key="frame" x="160.66666666666669" y="19191.333333333332" width="37.666666666666657" height="20.333333333332121"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFz-R4-aJP" userLabel="Show">
-                                                                <rect key="frame" x="218" y="19184.333333333332" width="66" height="34.333333333332121"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Show"/>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="A" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tw0-g5-HJK" userLabel="Status A">
-                                                        <rect key="frame" x="0.0" y="38408.333333333336" width="284" height="21625"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="990" constant="320" id="e2i-qa-MAE"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" id="CNQ-5H-y3q" userLabel="SimA">
-                                                        <rect key="frame" x="0.0" y="60038.333333333328" width="284" height="38403.333333333328"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP0-eZ-NyH" userLabel="Fill 2 A">
-                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUJ-st-7qI" userLabel="Fill 1 A">
-                                                                <rect key="frame" x="71" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Qjj-Z1-5tm" userLabel="Other">
-                                                                <rect key="frame" x="142" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dAX-WS-0bM" userLabel="No Fill">
-                                                                <rect key="frame" x="213" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
-                                                            </button>
-                                                        </subviews>
-                                                        <viewLayoutGuide key="safeArea" id="IdS-F5-39T"/>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="B" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpW-vd-Md2" userLabel="Status B">
-                                                        <rect key="frame" x="0.0" y="98446.666666664183" width="284" height="85973518.333333343"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="990" constant="320" id="qvx-kc-64A"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzU-dN-VS5" userLabel="SimB">
-                                                        <rect key="frame" x="0.0" y="86071970" width="284" height="38403.333333328366"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrl-OT-3cy" userLabel="Fill 2 B">
-                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kLP-gK-r7H" userLabel="Fill 1 B">
-                                                                <rect key="frame" x="71" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KwM-t6-wbE" userLabel="No Fill">
-                                                                <rect key="frame" x="142" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pw9-la-eWZ" userLabel="Other">
-                                                                <rect key="frame" x="213" y="0.0" width="71" height="38403.333333333336"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewarded Status" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-Yl-UbN" userLabel="RewardedStatus">
-                                                        <rect key="frame" x="0.0" y="86110378.333333328" width="284" height="80"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="Eiq-xK-WFC" userLabel="height = 60"/>
-                                                            <constraint firstAttribute="width" priority="990" constant="320" id="tt3-cA-S2W"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="320" id="X7z-Zk-KMV"/>
-                                            <constraint firstAttribute="height" constant="360" id="YKf-Bg-cur" userLabel="height = 300"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="_aFill1" destination="GUJ-st-7qI" id="avd-0z-aBy"/>
-                                            <outlet property="_aFill2" destination="KP0-eZ-NyH" id="XcB-Vq-t0H"/>
-                                            <outlet property="_aNoFill" destination="dAX-WS-0bM" id="e8L-Y5-SR2"/>
-                                            <outlet property="_aOther" destination="Qjj-Z1-5tm" id="s2C-uF-fLy"/>
-                                            <outlet property="_aStatus" destination="Tw0-g5-HJK" id="nX1-zZ-oQs"/>
-                                            <outlet property="_bFill1" destination="kLP-gK-r7H" id="RLI-b1-pEs"/>
-                                            <outlet property="_bFill2" destination="Rrl-OT-3cy" id="cQX-bh-y6C"/>
-                                            <outlet property="_bNoFill" destination="KwM-t6-wbE" id="Lvp-tD-U3F"/>
-                                            <outlet property="_bOther" destination="pw9-la-eWZ" id="8Cv-Fv-9cw"/>
-                                            <outlet property="_bStatus" destination="jpW-vd-Md2" id="JGj-aR-odW"/>
-                                            <outlet property="_loadSwitch" destination="zYc-oF-KPf" id="Vv9-MO-al3"/>
-                                            <outlet property="_showButton" destination="lFz-R4-aJP" id="rGU-DQ-f3W"/>
-                                            <outlet property="_status" destination="KbE-Yl-UbN" id="osq-oh-qj6"/>
-                                        </connections>
-                                    </view>
-                                    <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-HY-J5R" customClass="Interstitial" customModule="AMIntegration" customModuleProvider="target">
+                                    <view hidden="YES" tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-HY-J5R" customClass="InterstitialUi" customModule="AMIntegration" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yNt-ri-Qhh">
@@ -318,17 +61,20 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-48-gBC">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="31"/>
                                                         <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dhr-5A-SzG">
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dhr-5A-SzG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                                                             </switch>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Interstitial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJ3-oD-X1X">
-                                                                <rect key="frame" x="59.000000000000007" y="0.0" width="116.66666666666669" height="31"/>
+                                                                <rect key="frame" x="59" y="0.0" width="106" height="31"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="106" id="tZc-Fk-HG9"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkF-49-Vrt" userLabel="Show Interstitial">
-                                                                <rect key="frame" x="185.66666666666669" y="0.0" width="134.33333333333331" height="31"/>
+                                                                <rect key="frame" x="175" y="0.0" width="145" height="31"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title="Show Interstitial"/>
                                                             </button>
@@ -357,8 +103,8 @@
                                             <outlet property="_status" destination="M0k-CK-2ng" id="4n7-6r-IvV"/>
                                         </connections>
                                     </view>
-                                    <view tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HiA-5v-meW" customClass="Rewarded" customModule="AMIntegration" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="200" width="320" height="200"/>
+                                    <view hidden="YES" tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HiA-5v-meW" customClass="RewardedUi" customModule="AMIntegration" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b98-ki-nVh">
                                                 <rect key="frame" x="65" y="-36.000000000000057" width="110" height="82.666666666666671"/>
@@ -366,11 +112,11 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HqQ-jZ-yQu">
                                                         <rect key="frame" x="0.0" y="0.0" width="110" height="34.333333333333336"/>
                                                         <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Sal-cT-Whu">
-                                                                <rect key="frame" x="0.0" y="0.0" width="6.333333333333333" height="34.333333333333336"/>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Sal-cT-Whu">
+                                                                <rect key="frame" x="0.0" y="0.0" width="51" height="34.333333333333336"/>
                                                             </switch>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Load Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efC-C9-ViX">
-                                                                <rect key="frame" x="14.333333333333336" y="0.0" width="85.666666666666657" height="34.333333333333336"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efC-C9-ViX">
+                                                                <rect key="frame" x="59" y="0.0" width="41" height="34.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -406,7 +152,291 @@
                                             <outlet property="_status" destination="Mc4-Zn-xah" id="raT-bN-wOG"/>
                                         </connections>
                                     </view>
+                                    <view hidden="YES" tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpZ-dd-ufG" customClass="InterstitialSim" customModule="AMIntegration" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9xA-kk-HMw" userLabel="Stack">
+                                                <rect key="frame" x="-22.666666666666657" y="-56" width="320" height="1643.6666666666667"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rqc-es-cbU" userLabel="Controls">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="129.33333333333334"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interstitial" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wl-Sv-XNS" userLabel="Interstitial">
+                                                                <rect key="frame" x="0.0" y="55.000000000000007" width="71.666666666666671" height="19.333333333333336"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="a82-u1-Z1H">
+                                                                <rect key="frame" x="103.33333333333334" y="49" width="51" height="31"/>
+                                                            </switch>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3J-m2-h6Z" userLabel="Load">
+                                                                <rect key="frame" x="184.33333333333334" y="54.333333333333321" width="37.666666666666657" height="20.333333333333336"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-qe-5h3" userLabel="Show">
+                                                                <rect key="frame" x="254" y="47.333333333333314" width="66" height="34.333333333333343"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Show"/>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="A" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUF-oE-ENG" userLabel="Status A">
+                                                        <rect key="frame" x="0.0" y="134.33333333333331" width="320" height="72.666666666666686"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="990" constant="320" id="edV-l0-3Ue"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" id="wiO-cA-sak" userLabel="SimA">
+                                                        <rect key="frame" x="0.0" y="212" width="320" height="129.33333333333337"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upc-1H-noW" userLabel="Fill 2 A">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="129.33333333333334"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0B-AW-1fb" userLabel="Fill 1 A">
+                                                                <rect key="frame" x="80" y="0.0" width="80" height="129.33333333333334"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="58C-Ay-EoY" userLabel="Other">
+                                                                <rect key="frame" x="160" y="0.0" width="80" height="129.33333333333334"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sab-j5-K8E" userLabel="No Fill">
+                                                                <rect key="frame" x="240" y="0.0" width="80" height="129.33333333333334"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <viewLayoutGuide key="safeArea" id="f9s-pT-7MV"/>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="B" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-WJ-5Rh" userLabel="Status B">
+                                                        <rect key="frame" x="0.0" y="346.33333333333337" width="320" height="1078"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="990" constant="320" id="Gt5-e5-CXU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Vzc-Cq-5K0" userLabel="SimB">
+                                                        <rect key="frame" x="0.0" y="1429.3333333333333" width="320" height="129.33333333333326"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fjo-ac-p0a" userLabel="Fill 2 B">
+                                                                <rect key="frame" x="0.0" y="0.0" width="74.333333333333329" height="129.33333333333334"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Ed4-n3-xrd" userLabel="Fill 1 B">
+                                                                <rect key="frame" x="74.333333333333343" y="0.0" width="71.333333333333343" height="129.33333333333334"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pLH-9a-EBa" userLabel="No Fill">
+                                                                <rect key="frame" x="145.66666666666666" y="0.0" width="89.666666666666657" height="129.33333333333334"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1gN-cU-a45" userLabel="Other">
+                                                                <rect key="frame" x="235.33333333333334" y="0.0" width="84.666666666666657" height="129.33333333333334"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interstitial Status" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pE-al-hTe" userLabel="InterstitialStatus">
+                                                        <rect key="frame" x="0.0" y="1563.6666666666667" width="320" height="80"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="990" constant="320" id="JN4-kj-cJx"/>
+                                                            <constraint firstAttribute="height" constant="80" id="XHp-S7-O6v" userLabel="height = 60"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="pFb-OU-xIy"/>
+                                            <constraint firstAttribute="height" constant="360" id="pmb-lr-OjA" userLabel="height = 300"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="_aFill1" destination="B0B-AW-1fb" id="u5E-PN-fVw"/>
+                                            <outlet property="_aFill2" destination="Upc-1H-noW" id="y0m-JD-MbK"/>
+                                            <outlet property="_aNoFill" destination="sab-j5-K8E" id="r7Q-1d-xpn"/>
+                                            <outlet property="_aOther" destination="58C-Ay-EoY" id="cGw-kx-Ouf"/>
+                                            <outlet property="_aStatus" destination="RUF-oE-ENG" id="kqU-KZ-ne6"/>
+                                            <outlet property="_bFill1" destination="Ed4-n3-xrd" id="njZ-1x-pd8"/>
+                                            <outlet property="_bFill2" destination="fjo-ac-p0a" id="6ZW-Sp-XF4"/>
+                                            <outlet property="_bNoFill" destination="pLH-9a-EBa" id="IVk-WQ-3XM"/>
+                                            <outlet property="_bOther" destination="1gN-cU-a45" id="nfv-gU-Xf6"/>
+                                            <outlet property="_bStatus" destination="hrV-WJ-5Rh" id="kPG-Ai-XwH"/>
+                                            <outlet property="_loadSwitch" destination="a82-u1-Z1H" id="yaj-oz-Nk5"/>
+                                            <outlet property="_showButton" destination="bgy-qe-5h3" id="thg-YX-qYd"/>
+                                            <outlet property="_status" destination="3pE-al-hTe" id="Ha7-0Y-9WC"/>
+                                        </connections>
+                                    </view>
+                                    <view hidden="YES" tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eL5-E3-NEO" customClass="RewardedSim" customModule="AMIntegration" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-c4-Vlb" userLabel="Stack">
+                                                <rect key="frame" x="-22.666666666666657" y="-56" width="284" height="700.66666666666663"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rIr-CV-ntG" userLabel="Controls">
+                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="73.666666666666671"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewarded" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sv-zD-m9O" userLabel="Rewarded">
+                                                                <rect key="frame" x="0.0" y="27.333333333343035" width="72.666666666666671" height="19.333333333313931"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-oF-KPf">
+                                                                <rect key="frame" x="92" y="21.333333333343035" width="51" height="31"/>
+                                                            </switch>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdz-OC-ArT" userLabel="Load">
+                                                                <rect key="frame" x="160.66666666666669" y="26.666666666656965" width="37.666666666666657" height="20.333333333343035"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFz-R4-aJP" userLabel="Show">
+                                                                <rect key="frame" x="218" y="19.666666666656965" width="66" height="34.333333333343035"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Show"/>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="A" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tw0-g5-HJK" userLabel="Status A">
+                                                        <rect key="frame" x="0.0" y="78.666666666686069" width="284" height="41.666666666627862"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="990" constant="320" id="e2i-qa-MAE"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" id="CNQ-5H-y3q" userLabel="SimA">
+                                                        <rect key="frame" x="0.0" y="125.33333333337214" width="284" height="74"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP0-eZ-NyH" userLabel="Fill 2 A">
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="74"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUJ-st-7qI" userLabel="Fill 1 A">
+                                                                <rect key="frame" x="71" y="0.0" width="71" height="74"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Qjj-Z1-5tm" userLabel="Other">
+                                                                <rect key="frame" x="142" y="0.0" width="71" height="74"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dAX-WS-0bM" userLabel="No Fill">
+                                                                <rect key="frame" x="213" y="0.0" width="71" height="74"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <viewLayoutGuide key="safeArea" id="IdS-F5-39T"/>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="B" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpW-vd-Md2" userLabel="Status B">
+                                                        <rect key="frame" x="0.0" y="204.33333333325572" width="284" height="332.33333333348855"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="990" constant="320" id="qvx-kc-64A"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzU-dN-VS5" userLabel="SimB">
+                                                        <rect key="frame" x="0.0" y="541.66666603088379" width="284" height="74"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrl-OT-3cy" userLabel="Fill 2 B">
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="74"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 2"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kLP-gK-r7H" userLabel="Fill 1 B">
+                                                                <rect key="frame" x="71" y="0.0" width="71" height="74"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Fill 1"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KwM-t6-wbE" userLabel="No Fill">
+                                                                <rect key="frame" x="142" y="0.0" width="71" height="74"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="No Fill"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pw9-la-eWZ" userLabel="Other">
+                                                                <rect key="frame" x="213" y="0.0" width="71" height="74"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Other"/>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewarded Status" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-Yl-UbN" userLabel="RewardedStatus">
+                                                        <rect key="frame" x="0.0" y="620.66666603088379" width="284" height="80"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="Eiq-xK-WFC" userLabel="height = 60"/>
+                                                            <constraint firstAttribute="width" priority="990" constant="320" id="tt3-cA-S2W"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="X7z-Zk-KMV"/>
+                                            <constraint firstAttribute="height" constant="360" id="YKf-Bg-cur" userLabel="height = 300"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="_aFill1" destination="GUJ-st-7qI" id="avd-0z-aBy"/>
+                                            <outlet property="_aFill2" destination="KP0-eZ-NyH" id="XcB-Vq-t0H"/>
+                                            <outlet property="_aNoFill" destination="dAX-WS-0bM" id="e8L-Y5-SR2"/>
+                                            <outlet property="_aOther" destination="Qjj-Z1-5tm" id="s2C-uF-fLy"/>
+                                            <outlet property="_aStatus" destination="Tw0-g5-HJK" id="nX1-zZ-oQs"/>
+                                            <outlet property="_bFill1" destination="kLP-gK-r7H" id="RLI-b1-pEs"/>
+                                            <outlet property="_bFill2" destination="Rrl-OT-3cy" id="cQX-bh-y6C"/>
+                                            <outlet property="_bNoFill" destination="KwM-t6-wbE" id="Lvp-tD-U3F"/>
+                                            <outlet property="_bOther" destination="pw9-la-eWZ" id="8Cv-Fv-9cw"/>
+                                            <outlet property="_bStatus" destination="jpW-vd-Md2" id="JGj-aR-odW"/>
+                                            <outlet property="_loadSwitch" destination="zYc-oF-KPf" id="Vv9-MO-al3"/>
+                                            <outlet property="_showButton" destination="lFz-R4-aJP" id="rGU-DQ-f3W"/>
+                                            <outlet property="_status" destination="KbE-Yl-UbN" id="osq-oh-qj6"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="dE4-6X-Eux" firstAttribute="centerX" secondItem="sgf-TX-Yq0" secondAttribute="centerX" id="dSy-1j-D6v"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -420,7 +450,15 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="_titleLabel" destination="3DT-XR-XY2" id="bNU-Ca-uNy"/>
+                        <outlet property="_controlButton" destination="T1M-Tv-bOA" id="fnC-id-LGQ"/>
+                        <outlet property="_groupView" destination="dE4-6X-Eux" id="NL2-C9-7pL"/>
+                        <outlet property="_interstitialSim" destination="RpZ-dd-ufG" id="pPf-wJ-AM1"/>
+                        <outlet property="_interstitialUi" destination="dEK-HY-J5R" id="dOx-ma-S3y"/>
+                        <outlet property="_optimizedButton" destination="JX7-PD-NDm" id="dwi-nl-Wzk"/>
+                        <outlet property="_rewardedSim" destination="eL5-E3-NEO" id="gbV-QK-R0p"/>
+                        <outlet property="_rewardedUi" destination="HiA-5v-meW" id="84M-rO-CHD"/>
+                        <outlet property="_simulatorButton" destination="fzG-qh-fhP" id="wZV-wo-F6z"/>
+                        <outlet property="_title" destination="3DT-XR-XY2" id="JIU-2F-o3P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
